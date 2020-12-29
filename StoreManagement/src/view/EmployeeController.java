@@ -113,7 +113,7 @@ public class EmployeeController implements Initializable {
     public void btnAdd_Click(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/AddEmployeeDialog.fxml"));
+            loader.setLocation(getClass().getResource("./AddEmployeeDialog.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
@@ -137,7 +137,7 @@ public class EmployeeController implements Initializable {
             //refreshTable();
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("../view/EditEmployeeDialog.fxml"));
+                loader.setLocation(getClass().getResource("./EditEmployeeDialog.fxml"));
                 AnchorPane page = (AnchorPane) loader.load();
 
                 // Create the dialog Stage.

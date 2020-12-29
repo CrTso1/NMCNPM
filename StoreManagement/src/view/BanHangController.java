@@ -219,7 +219,7 @@ public class BanHangController implements Initializable{
         } else {
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("package/package/AddCustomerDialog.fxml"));
+                loader.setLocation(getClass().getResource("./AddCustomertoBillView.fxml"));
                 AnchorPane page = (AnchorPane) loader.load();
                 // Create the dialog Stage.
                 Stage dialogStage = new Stage();

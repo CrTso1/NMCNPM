@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreManagement.src.view.BanHangController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.BanHangController">
    <children>
       <TextField id="searchProductText" fx:id="searchProduct" layoutX="20.0" layoutY="90.0" prefHeight="31.0" prefWidth="165.0" />
       <Button id="searchProductButton" fx:id="searchProductButt" layoutX="200.0" layoutY="90.0" mnemonicParsing="false" text="Tìm kiếm" />
@@ -43,7 +43,7 @@
          <children>
             <Label text="Số điện thoại:" />
             <TextField id="inputPhoneText" fx:id="phoneText" />
-            <Button id="inputPhoneButt" fx:id="findCusButt" mnemonicParsing="false" text="Tìm kiếm" />
+            <Button id="inputPhoneButt" fx:id="findCusButt" mnemonicParsing="false" onAction="#findCusButt_Click" text="Tìm kiếm" />
             <Label text="Tên khách:" />
             <TextField id="customerName" fx:id="cusNameText" />
          </children>

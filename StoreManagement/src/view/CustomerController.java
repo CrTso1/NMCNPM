@@ -128,7 +128,7 @@ public class CustomerController implements Initializable {
     public void btnAddCustomer_Click(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/AddCustomerDialog.fxml"));
+            loader.setLocation(getClass().getResource("./AddCustomerDialog.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
@@ -150,7 +150,7 @@ public class CustomerController implements Initializable {
             Customer temp = tableCustomer.getSelectionModel().getSelectedItem();
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("../view/EditCustomerDialog.fxml"));
+                loader.setLocation(getClass().getResource("./EditCustomerDialog.fxml"));
                 AnchorPane page = (AnchorPane) loader.load();
 
                 // Create the dialog Stage.
