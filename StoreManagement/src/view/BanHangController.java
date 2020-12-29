@@ -120,7 +120,7 @@ public class BanHangController implements Initializable{
         loadData();
         searchProduct.textProperty().addListener((observableValue, s, t1) -> {
             listProduct.clear();
-            listProduct.addAll(ProductService.getInstance().searchProduct(t1));
+          //TO-DO Tìm kiếm theo ID  listProduct.addAll(ProductService.getInstance().search(t1));
         });
 
         bilNameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
@@ -227,8 +227,8 @@ public class BanHangController implements Initializable{
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
                 // set controller
-                AddCustomerController addCustomerController = loader.getController();
-                addCustomerController.setCustomerController(this);
+                /*AddCustomerController addCustomerController = loader.getController();
+                addCustomerController.setCustomerController(this);*/
                 dialogStage.showAndWait();
             }
             catch (IOException e){

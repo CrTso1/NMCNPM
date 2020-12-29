@@ -1,4 +1,4 @@
-package Utils;
+package src.utils;
 
 import javafx.util.Duration;
 import tray.animations.AnimationType;
@@ -55,7 +55,7 @@ public class Util {
         return  prefix + "_" +formatter.format(key);
     };
 
-    public static void showSuccess(int i, String title ,String s) {
+    public static void showSuccess(String title ,String s) {
         TrayNotification tray = new TrayNotification();
         AnimationType type = AnimationType.POPUP;
 

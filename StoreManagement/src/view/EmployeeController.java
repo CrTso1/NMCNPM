@@ -1,5 +1,6 @@
 package src.view;
 
+import src.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -78,8 +79,8 @@ public class EmployeeController implements Initializable {
         loadData();
 
         txtSearch.textProperty().addListener((observableValue, s, t1) -> {
-            listNV.clear();
-            listNV.addAll(EmployeeService.getInstance().searchNV(t1));
+            listEmployee.clear();
+            listEmployee.addAll(EmployeeService.getInstance().getEmployeeByID(t1));
         });
     }
 
@@ -88,7 +89,7 @@ public class EmployeeController implements Initializable {
     }
 
     private void loadData() {
-        listEmployee = FXCollections.observableArrayList(EmployeeService.getInstance().getAllNV());
+        listEmployee = FXCollections.observableArrayList(EmployeeService.getInstance().getAllEmployees());
         tbEmployee.setItems(listEmployee);
     }
 
@@ -103,7 +104,7 @@ public class EmployeeController implements Initializable {
 
     private void clearInput() {
         txtEmployeeName.setText("");
-        txtBonus.setText("");
+        txtEmployeeId.setText("");
         txtPassword.setText("");
         txtRole.setText("");
         txtUsername.setText("");
@@ -147,7 +148,7 @@ public class EmployeeController implements Initializable {
                 //
                 EditEmployeeController editEmployeeController = loader.getController();
                 editEmployeeController.setEmployeeController(this);
-                editEmployeeController.setEditNV(temp);
+                editEmployeeController.setEditEmployee(temp);
                 dialogStage.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -170,14 +171,14 @@ public class EmployeeController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Xóa nhân viên");
             alert.setHeaderText("Bạn muốn xóa nhân viên này ra khỏi danh sách?");
-            alert.setContentText("[" + temp.getId() + "] " + temp.getName());
+            alert.setContentText("[" + temp.getID() + "] " + temp.getName());
 
             // option != null.
             Optional<ButtonType> option = alert.showAndWait();
 
              if (option.get() == ButtonType.OK) {
-                int rs = EmployeeService.getInstance().deleteEmployee(temp.getId());
-                Util.showSuccess(rs, "Quản lý nhân viên", "Xóa nhân viên thành công!");
+                EmployeeService.getInstance().removeEmployee(temp.getID());
+                Util.showSuccess("Quản lý nhân viên", "Xóa nhân viên thành công!");
                 refreshTable();
                 clearInput();
             }

@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/javafx-sdk-11.0.2/lib" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/fontawesomefx-8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/charm-glisten-4.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/jasperreports-6.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/commons-beanutils-1.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/commons-io-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/jfoenix-9.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/jasperreports-6.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/mysql-connector-java-8.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/TrayTester.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/javafx-sdk-11.0.2/lib" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/javafx-sdk-11.0.2/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../NMCNPM-adsfad/dependencies/dependencies/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>

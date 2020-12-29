@@ -1,11 +1,13 @@
 package src.view;
 
+import src.utils.Util;
 import src.model.Product;
 import src.service.ProductService;
 import src.model.Customer;
 
+import src.service.CustomerService;
 
-import utils.Util;
+import src.utils.*;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
@@ -74,7 +76,7 @@ public class AddCustomerController implements Initializable {
             panelAddCustomer.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
         });
 
-        txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.S));
+        txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.KH));
         txtCustomerId.setDisable(true);
     }
 
@@ -120,18 +122,18 @@ public class AddCustomerController implements Initializable {
             String customerIsVip = txtCustomerIsVip.getText();
             String customerPhone = txtCustomerPhone.getText();
             String customerPoint = txtCustomerPoint.getText();
-            Customer customer = new Customer(customerId, customerName, customerIsVip, customerPhone, customerPoint);
+            Customer customer = new Customer(customerId, customerName,"","", customerPhone,  true, Integer.parseInt(customerPoint));
 
-            int rs = CustomerService.getInstance().addCustomer(customer);
+            CustomerService.getInstance().addCustomer(customer);
             customerController.refreshTable();
-            txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.S));
+            txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.KH));
             txtCustomerIsVip.setText("");
             txtCustomerName.setText("");
             txtCustomerPhone.setText("");
             txtCustomerPoint.setText("");
             
             
-            Util.showSuccess(rs, "Quản lý khách hàng", "Thêm khách hàng thành công!");
+            Util.showSuccess("Quản lý khách hàng", "Thêm khách hàng thành công!");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");

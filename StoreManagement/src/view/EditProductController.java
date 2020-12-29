@@ -1,7 +1,8 @@
 package src.view;
 
 // import model va service
-import com.javafx.librarian.utils.Util;
+import src.service.ProductService;
+import src.utils.Util;
 import com.jfoenix.controls.JFXButton;
 
 //import controller.ProductController;
@@ -49,6 +50,8 @@ public class EditProductController implements Initializable {
     @FXML
     public TextField txtProductUnit;
     @FXML
+    public TextField txtProductQuantity;
+    @FXML
     public RadioButton rdbTrong;
     @FXML
     public Button btnLuu;
@@ -94,7 +97,7 @@ public class EditProductController implements Initializable {
         txtProductName.setText(product.getProductName());
         txtProductUnit.setText(product.getProductUnit());
         txtProductDetail.setText(product.getProductDetail());
-        txtProductPrice.setText(product.getProductPrice());
+        txtProductPrice.setText(""+product.getProductPrice());
 
     }
 
@@ -134,14 +137,15 @@ public class EditProductController implements Initializable {
 
         String productID = txtProductId.getText();
         String productName = txtProductName.getText();
-        String productPrice = txtProductPrice.getText();
-        String productDetail = txtProductName.getText();
+        String productQuantity = txtProductQuantity.getText();
         String productUnit = txtProductPrice.getText();
+        String productDetail = txtProductName.getText();
+        String productPrice = txtProductPrice.getText();
 
-        Product product = new Product(productID, productName, productPrice, productUnit, productDetail);
+        Product product = new Product(productID, productName, Integer.parseInt(productQuantity), productUnit, productDetail, Integer.parseInt(productPrice));
 
-        int rs = ProductController.getInstance().editProduct(product);
-        Util.showSuccess(rs, "Quản lý sản phẩm", "Sửa sản phẩm thành công!");
+        ProductService.getInstance().updateProduct(product);
+        Util.showSuccess("Quản lý sản phẩm", "Sửa sản phẩm thành công!");
         productController.refreshTable();
         txtProductId.setText("");
         txtProductName.setText("");

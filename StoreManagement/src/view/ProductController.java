@@ -1,6 +1,7 @@
 package src.view;
 
-import com.utils.Util;
+import com.mysql.cj.result.ValueFactory;
+import src.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import src.model.Product;
+import src.service.ProductService;
 
 public class ProductController implements Initializable {
     //region khai báo biến controls
@@ -33,17 +35,17 @@ public class ProductController implements Initializable {
     @FXML
     public TableColumn<Product, String> colProductName;
     @FXML
-    public TableColumn<Product, String> colProductUnit;
+    public TableColumn<Product, Integer> colProductQuantity;
     @FXML
     public TableColumn<Product, String> colProductDetail;
     @FXML
-    public TableColumn<Product, String> colProductPrice;
+    public TableColumn<Product, Integer> colProductPrice;
     @FXML
     public TextField txtProductName;
     @FXML
     public TextField txtProductId;
     @FXML
-    public TextField txtProductUnit;
+    public TextField txtProductQuantity;
     @FXML
     public TextField txtProductDetail;
     @FXML
@@ -72,37 +74,35 @@ public class ProductController implements Initializable {
         loadData();
 
         //check permission
-        if(Account.currentUser.getIdper() == 1) {
-            btn1.setVisible(false);
-            btn2.setVisible(false);
-            btn3.setVisible(false);
+        if(true) {
+            btnAddProduct.setVisible(false);
+            btnDeleteProduct.setVisible(false);
+            btnEditProduct.setVisible(false);
         }
 
-        txt1.setEditable(false);
-        txt2.setEditable(false);
-        txt3.setEditable(false);
-        txt4.setEditable(false);
-        txt5.setEditable(false);
+        txtProductId.setEditable(false);
+        txtProductName.setEditable(false);
+        txtProductPrice.setEditable(false);
+        txtProductPrice.setEditable(false);
+        txtProductQuantity.setEditable(false);
 
-        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+        textSearch.textProperty().addListener((observableValue, s, t1) -> {
             listProduct.clear();
-           //TO-DO listProduct.addAll(ProductService.getInstance().searchProduct(t1));
+            listProduct.addAll(ProductService.getInstance().getProductByID(Integer.parseInt(t1)));
         });
     }
 
     private void setCell() {
-        // TO-DO viết các hàm lấy dữ liệu 
-        // colID.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        // colName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        // colUnit.setCellValueFactory(cellData -> cellData.getValue().maTheLoaiProperty());
-        // colDetail.setCellValueFactory(cellData -> cellData.getValue().maTacGiaProperty());
-        // colPrice.setCellValueFactory(cellData -> cellData.getValue().namXBProperty().asObject());
+         colProductID.setCellValueFactory(new PropertyValueFactory<Product, String>("productId"));
+        colProductName.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
+         colProductDetail.setCellValueFactory(new PropertyValueFactory<Product, String>("productDetail"));
+         colProductPrice.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productPrice"));
+         colProductQuantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
     }
 
     private void loadData() {
-        //
-        //listProduct = FXCollections.observableArrayList(ProductService.getInstance().getAllSach());
-        //tableProduct.setItems(listProduct);
+        listProduct = FXCollections.observableArrayList(ProductService.getInstance().getAllProduct());
+        tableProduct.setItems(listProduct);
     }
 
     public void refreshTable() {
@@ -112,58 +112,19 @@ public class ProductController implements Initializable {
     }
 
     public void clearInput() {
-        txt1.setText("");
-        txt2.setText("");
-        txt3.setText("");
-        txt4.setText("");
-        txt5.setText("");
+        txtProductQuantity.setText("");
+        txtProductPrice.setText("");
+        txtProductName.setText("");
+        txtProductId.setText("");
+        txtProductDetail.setText("");
     }
     public void bindingData() {
-        // không cần thiết
-        // Sach temp = tableSach.getSelectionModel().getSelectedItem();
-        // System.out.println(TacGiaService.getInstance().getTacGiaByID(temp.getMaTacGia()));
-        // txtMaSach.setText(temp.getMaSach());
-        // txtTenSach.setText(temp.getTenSach());
-        // txtMaTacGia.setText((String.valueOf(temp.getMaTacGia())) + " - " + TacGiaService.getInstance().getTacGiaByID(temp.getMaTacGia()).getTenTacGia());
-        // txtMaTheLoai.setText((String.valueOf(temp.getMaTheLoai())) + " - " + TheLoaiService.getInstance().getTheLoaiByID(temp.getMaTheLoai()).getTenTheLoai());
-        // txtNamXB.setText((String.valueOf(temp.getNamXB())));;
-        // txtNXB.setText(temp.getNXB());
-        // txtNgayNhap.setText((String.valueOf(temp.getNgayNhap())));
-        // txtTriGia.setText((String.valueOf(temp.getTriGia())));
-        // txtSoLuong.setText((String.valueOf(temp.getSoLuong())));
-        // if (String.valueOf(temp.getTinhTrang()).equals("Trống"))
-        // {
-        //     rdbTrong.setSelected(true);
-        //     rdbDangMuon.setSelected(false);
-        //     rdbMat.setSelected(false);
-        //     rdbHuHong.setSelected(false);
-        // }
-        // else if(String.valueOf(temp.getTinhTrang()).equals("Đang mượn"))
-        // {
-        //     rdbDangMuon.setSelected(true);
-        //     rdbTrong.setSelected(false);
-        //     rdbMat.setSelected(false);
-        //     rdbHuHong.setSelected(false);
-        // }
-        // else if(String.valueOf(temp.getTinhTrang()).equals("Mất"))
-        // {
-        //     rdbMat.setSelected(true);
-        //     rdbTrong.setSelected(false);
-        //     rdbDangMuon.setSelected(false);
-        //     rdbHuHong.setSelected(false);
-        // }
-        // else
-        // {
-        //     rdbHuHong.setSelected(true);
-        //     rdbTrong.setSelected(false);
-        //     rdbDangMuon.setSelected(false);
-        //     rdbMat.setSelected(false);
-        // }
-
-        // System.out.println(temp.getImage());
-        // imgAnhBia.setImage(temp.getImage());
-        // imgAnhBia.setCache(true);
-
+        Product temp = tableProduct.getSelectionModel().getSelectedItem();
+        txtProductId.setText(temp.getProductId());
+        txtProductDetail.setText(temp.getProductDetail());
+        txtProductName.setText(temp.getProductName());
+        txtProductPrice.setText(""+temp.getProductPrice());
+        txtProductQuantity.setText(""+temp.getProductQuantity());
     }
 
     public void btnAddProduct_Click(ActionEvent event) {
@@ -202,7 +163,7 @@ public class ProductController implements Initializable {
                 //
                 EditProductController editProductController = loader.getController();
                 editProductController.setProductController(this);
-                editSachController.setEditSach(temp);
+                editProductController.setEditProduct(temp);
                 dialogStage.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -225,15 +186,15 @@ public class ProductController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Xóa sách");
             alert.setHeaderText("Bạn muốn xóa sản phẩm này ra khỏi danh sách?");
-            alert.setContentText("[" + temp.getID() + "] " + temp.getName()); 
+            alert.setContentText("[" + temp.getProductId() + "] " + temp.getProductName());
 
             // option != null.
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.get() == null) {
             } else if (option.get() == ButtonType.OK) {
-                int rs = SachService.getInstance().deleteSach(temp.getMaSach());
-                Util.showSuccess(rs, "Quản lý sản phẩm", "Xóa sản phẩm thành công!");
+                ProductService.getInstance().removeProduct(temp.getProductId());
+                Util.showSuccess("Quản lý sản phẩm", "Xóa sản phẩm thành công!");
                 refreshTable();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {

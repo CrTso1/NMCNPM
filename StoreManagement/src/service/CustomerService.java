@@ -28,7 +28,7 @@ public class CustomerService {
     public  void removeCustomer(String IDCustomer){
         CustomerDAO.getInstance().removeCustomer(IDCustomer);
     }
-    public void updateGoods(Customer g) {
+    public void updateCustomer(Customer g) {
         CustomerDAO.getInstance().updateCustomer(g);
     }
     public Customer getCustomersByID(int ID){

@@ -6,19 +6,19 @@ public class Employee extends Person{
 	private long Bonus;
 	private long salary;
 	
-	private String EmployeeName;
+	private String username;
 	private String passWord;
 
 	public Employee()	{
 
 	}
-	public Employee(String ID, String name, String DoB, String address, String phone, String Role, String shift, long Bonus, long salary, String EmployeeName, String passWord) {
+	public Employee(String ID, String name, String DoB, String address, String phone, String Role, String shift, long salary, String username, String passWord) {
 		super(ID, name, DoB, address, phone);
 		this.Role = Role;
 		this.shift = shift;
 		this.Bonus = Bonus;
 		this.salary = salary;
-		this.EmployeeName = EmployeeName;
+		this.username = username;
 		this.passWord = passWord;
 	}
 
@@ -55,11 +55,11 @@ public class Employee extends Person{
 	}
 
 	public String getEmployeeName() {
-		return EmployeeName;
+		return username;
 	}
 
 	public void setEmployeeName(String EmployeeName) {
-		this.EmployeeName = EmployeeName;
+		this.username = EmployeeName;
 	}
 
 	public String getPassWord() {
