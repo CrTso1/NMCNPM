@@ -4,7 +4,7 @@ import src.model.Employee;
 import src.service.EmployeeService;
 import src.service.ProductService;
 
-import src.utils.Util;
+import src.utils.*;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
@@ -35,6 +35,8 @@ import java.util.ResourceBundle;
 
 public class AddEmployeeController implements Initializable {
     private EmployeeController employeeController;
+    @FXML
+    public Pane panelAddEmployee;
     @FXML
     public TextField txtEmployeeId;
     @FXML
@@ -79,7 +81,7 @@ public class AddEmployeeController implements Initializable {
             panelAddEmployee.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
         });
 
-        txtEmployeeId.setText(Util.generateID(Util.PREFIX_CODE.S));
+        txtEmployeeId.setText(Util.generateID(Util.PREFIX_CODE.NV));
         txtEmployeeId.setDisable(true);
     }
 
@@ -127,19 +129,20 @@ public class AddEmployeeController implements Initializable {
             String employeeSalary = txtEmployeeSalary.getText();
             String employeeShift = txtEmployeeShift.getText();
             String employeeUsername = txtEmployeeUsername.getText();
+            String employeePassword = txtEmployeePassword.getText();
 
-            Employee employee = new Employee(employeeId, employeeName, employeeSalary, employeeShift, employeeUsername);
+            Employee employee = new Employee(employeeId, employeeName,"", "", "phone", "employee",employeeShift, Long.parseLong(employeeSalary), employeeUsername, "pass");
 
-            int rs = ProductService.getInstance().addEmployee(employee);
+            EmployeeService.getInstance().addEmployee(employee);
             employeeController.refreshTable();
-            txtEmployeeId.setText(Util.generateID(Util.PREFIX_CODE.S));
+            txtEmployeeId.setText(Util.generateID(Util.PREFIX_CODE.NV));
             txtEmployeeBonus.setText("");
             txtEmployeePassword.setText("");
             txtEmployeeShift.setText("");
             txtEmployeeSalary.setText("");
             txtEmployeeUsername.setText("");
-            
-            Util.showSuccess(rs, "Quản lý nhân viên", "Thêm nhân viên thành công!");
+
+            Util.showSuccess("Quản lý nhân viên", "Thêm nhân viên thành công!");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");

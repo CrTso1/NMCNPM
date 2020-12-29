@@ -1,7 +1,8 @@
 package src.view;
 
 // import model va service
-import utils.Util;
+import src.service.EmployeeService;
+import src.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import src.model.Employee;
 
@@ -91,14 +92,14 @@ public class EditEmployeeController implements Initializable {
         bindingData();
     }
     private void bindingData() {
-       // txtCustomerId.setText();
-        txtEmployeeId.setText(employee.getEmployeeId());
-        txtEmployeeName.setText(employee.getEmployeeName());
-        txtEmployeeBonus.setText(employee.getEmployeeBonus());
-        txtEmployeePassword.setText(employee.getEmployeePassword());
-        txtEmployeeSalary.setText(employee.getEmployeeSalary());
-        txtEmployeeShift.setText(employee.getEmployeeShift());
-        txtEmployeeUsername.setText(employee.getEmployeeUsername())
+        // txtCustomerId.setText();
+        txtEmployeeId.setText(employee.getID());
+        txtEmployeeName.setText(employee.getName());
+        txtEmployeeBonus.setText(""+employee.getBonus());
+        txtEmployeePassword.setText(employee.getPassWord());
+        txtEmployeeSalary.setText(""+employee.getSalary());
+        txtEmployeeShift.setText(employee.getShift());
+        txtEmployeeUsername.setText(employee.getEmployeeName());
 
     }
 
@@ -136,11 +137,17 @@ public class EditEmployeeController implements Initializable {
             return;
         }
         //
+        String employeeId = txtEmployeeId.getText();
+        String employeeName = txtEmployeeName.getText();
+        String employeeSalary = txtEmployeeSalary.getText();
+        String employeeShift = txtEmployeeShift.getText();
+        String employeeUsername = txtEmployeeUsername.getText();
+        String employeePassword = txtEmployeePassword.getText();
 
-        Employee employee = new Employee(txtEmployeeId.getText(), txtEmployeeName.getText(), txtEmployeeBonus.getText(), txtEmployeeSalary.getText(), txtEmployeeShift.getText(), txtEmployeeUsername.getText(), txtEmployeePassword.getText());
+        Employee employee = new Employee(employeeId, employeeName,"", "", "phone", "employee",employeeShift, Long.parseLong(employeeSalary), employeeUsername, "pass");
 
-        int rs = EmployeeController.getInstance().editEmployee(employee);
-        Util.showSuccess(rs, "Quản lý nhân viên", "Sửa nhân viên thành công!");
+        EmployeeService.getInstance().updateEmployee(employee);
+        Util.showSuccess("Quản lý nhân viên", "Sửa nhân viên thành công!");
         employeeController.refreshTable();
         txtEmployeeId.setText("");
         txtEmployeeName.setText("");

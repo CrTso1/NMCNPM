@@ -73,8 +73,8 @@ public class AddProductController implements Initializable {
             panelAddProduct.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
         });
 
-        txtProductId.setText(Util.generateID(Util.PREFIX_CODE.S));
-        txtMaSach.setDisable(true);
+        txtProductId.setText(Util.generateID(Util.PREFIX_CODE.SP));
+        txtProductId.setDisable(true);
     }
 
     public void setProductController(ProductController product) {
@@ -121,18 +121,18 @@ public class AddProductController implements Initializable {
             int unit = Integer.parseInt(txtProductUnit.getText());
             int price = Integer.parseInt(txtProductPrice.getText());
 
-            Product product = new Product(productId, productName, productDetail, price, unit);
+            Product product = new Product(productId, productName, unit, productDetail, price);
 
-            int rs = ProductService.getInstance().addProduct(product);
+            ProductService.getInstance().addProduct(product);
             productController.refreshTable();
-            txtProductId.setText(Util.generateID(Util.PREFIX_CODE.S));
+            txtProductId.setText(Util.generateID(Util.PREFIX_CODE.SP));
             txtProductDetail.setText("");
             txtProductId.setText("");
             txtProductName.setText("");
             txtProductPrice.setText("");
             txtProductUnit.setText("");
-            
-            Util.showSuccess(rs, "Quản lý sản phẩm", "Thêm sản phẩm thành công!");
+
+            Util.showSuccess("Quản lý sản phẩm", "Thêm sản phẩm thành công!");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");

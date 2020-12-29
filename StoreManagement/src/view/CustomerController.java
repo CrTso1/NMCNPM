@@ -1,5 +1,7 @@
 package src.view;
 
+import src.model.Product;
+import src.service.CustomerService;
 import src.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,7 +37,7 @@ public class CustomerController implements Initializable {
     @FXML
     public TableColumn<Customer, String> colCustomerPhone;
     @FXML
-    public TableColumn<Customer, String> colCustomerPoint;
+    public TableColumn<Customer, Integer> colCustomerPoint;
     @FXML
     public TableColumn<Customer, String> colCustomerIsVip;
     @FXML
@@ -70,37 +72,35 @@ public class CustomerController implements Initializable {
         loadData();
 
         //check permission
-        if(Account.currentUser.getIdper() == 1) {
-            btn1.setVisible(false);
-            btn2.setVisible(false);
-            btn3.setVisible(false);
+        if(true) {
+            btnAddCustomer.setVisible(false);
+            btnDeleteCustomer.setVisible(false);
+            btnEditCustomer.setVisible(false);
         }
 
-        txt1.setEditable(false);
-        txt2.setEditable(false);
-        txt3.setEditable(false);
-        txt4.setEditable(false);
-        txt5.setEditable(false);
+        txtCustomerId.setEditable(false);
+        txtCustomerIsVip.setEditable(false);
+        txtCustomerName.setEditable(false);
+        txtCustomerPhone.setEditable(false);
+        txtCustomerPoint.setEditable(false);
 
-        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+        textSearch.textProperty().addListener((observableValue, s, t1) -> {
             listCustomer.clear();
-           //TO-DO listCustomer.addAll(CustomerService.getInstance().searchCustomer(t1));
+            listCustomer.addAll(CustomerService.getInstance().getCustomersByID(Integer.parseInt(t1)));
         });
     }
 
     private void setCell() {
-        // TO-DO viết các hàm lấy dữ liệu 
-        // colID.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        // colName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        // colUnit.setCellValueFactory(cellData -> cellData.getValue().maTheLoaiProperty());
-        // colDetail.setCellValueFactory(cellData -> cellData.getValue().maTacGiaProperty());
-        // colPrice.setCellValueFactory(cellData -> cellData.getValue().namXBProperty().asObject());
+        colCustomerID.setCellValueFactory(new PropertyValueFactory<Customer, String>("ID"));
+        colCustomerIsVip.setCellValueFactory(new PropertyValueFactory<Customer, String>("isVIP"));
+        colCustomerName.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
+        colCustomerPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("phone"));
+        colCustomerPoint.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("Point"));
     }
 
     private void loadData() {
-        //
-        //listCustomer = FXCollections.observableArrayList(CustomerService.getInstance().getAllSach());
-        //tableCustomer.setItems(listCustomer);
+        listCustomer = FXCollections.observableArrayList(CustomerService.getInstance().getAllCustomers());
+        tableCustomer.setItems(listCustomer);
     }
 
     public void refreshTable() {
@@ -110,58 +110,19 @@ public class CustomerController implements Initializable {
     }
 
     public void clearInput() {
-        txt1.setText("");
-        txt2.setText("");
-        txt3.setText("");
-        txt4.setText("");
-        txt5.setText("");
+        txtCustomerPoint.setText("");
+        txtCustomerPhone.setText("");
+        txtCustomerName.setText("");
+        txtCustomerIsVip.setText("");
+        txtCustomerId.setText("");
     }
     public void bindingData() {
-        // không cần thiết
-        // Sach temp = tableSach.getSelectionModel().getSelectedItem();
-        // System.out.println(TacGiaService.getInstance().getTacGiaByID(temp.getMaTacGia()));
-        // txtMaSach.setText(temp.getMaSach());
-        // txtTenSach.setText(temp.getTenSach());
-        // txtMaTacGia.setText((String.valueOf(temp.getMaTacGia())) + " - " + TacGiaService.getInstance().getTacGiaByID(temp.getMaTacGia()).getTenTacGia());
-        // txtMaTheLoai.setText((String.valueOf(temp.getMaTheLoai())) + " - " + TheLoaiService.getInstance().getTheLoaiByID(temp.getMaTheLoai()).getTenTheLoai());
-        // txtNamXB.setText((String.valueOf(temp.getNamXB())));;
-        // txtNXB.setText(temp.getNXB());
-        // txtNgayNhap.setText((String.valueOf(temp.getNgayNhap())));
-        // txtTriGia.setText((String.valueOf(temp.getTriGia())));
-        // txtSoLuong.setText((String.valueOf(temp.getSoLuong())));
-        // if (String.valueOf(temp.getTinhTrang()).equals("Trống"))
-        // {
-        //     rdbTrong.setSelected(true);
-        //     rdbDangMuon.setSelected(false);
-        //     rdbMat.setSelected(false);
-        //     rdbHuHong.setSelected(false);
-        // }
-        // else if(String.valueOf(temp.getTinhTrang()).equals("Đang mượn"))
-        // {
-        //     rdbDangMuon.setSelected(true);
-        //     rdbTrong.setSelected(false);
-        //     rdbMat.setSelected(false);
-        //     rdbHuHong.setSelected(false);
-        // }
-        // else if(String.valueOf(temp.getTinhTrang()).equals("Mất"))
-        // {
-        //     rdbMat.setSelected(true);
-        //     rdbTrong.setSelected(false);
-        //     rdbDangMuon.setSelected(false);
-        //     rdbHuHong.setSelected(false);
-        // }
-        // else
-        // {
-        //     rdbHuHong.setSelected(true);
-        //     rdbTrong.setSelected(false);
-        //     rdbDangMuon.setSelected(false);
-        //     rdbMat.setSelected(false);
-        // }
-
-        // System.out.println(temp.getImage());
-        // imgAnhBia.setImage(temp.getImage());
-        // imgAnhBia.setCache(true);
-
+        Customer temp = tableCustomer.getSelectionModel().getSelectedItem();
+        txtCustomerId.setText(temp.getID());
+        txtCustomerIsVip.setText(""+temp.isVIP());
+        txtCustomerName.setText(temp.getName());
+        txtCustomerPoint.setText(""+temp.getPoint());
+        txtCustomerPhone.setText(""+temp.getPhone());
     }
 
     public void btnAddCustomer_Click(ActionEvent event) {
@@ -210,7 +171,7 @@ public class CustomerController implements Initializable {
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Chưa chọn khach hang cần chỉnh sửa!");
+            alert.setHeaderText("Chưa chọn khách hàng cần chỉnh sửa!");
             alert.showAndWait();
         }
     }
@@ -222,16 +183,16 @@ public class CustomerController implements Initializable {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Xóa sách");
-            alert.setHeaderText("Bạn muốn xóa khach hang này ra khỏi danh sách?");
-            alert.setContentText("[" + temp.getID() + "] " + temp.getName()); 
+            alert.setHeaderText("Bạn muốn xóa khách hàng này ra khỏi danh sách?");
+            alert.setContentText("[" + temp.getID() + "] " + temp.getName());
 
             // option != null.
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.get() == null) {
             } else if (option.get() == ButtonType.OK) {
-                int rs = SachService.getInstance().deleteSach(temp.getMaSach());
-                Util.showSuccess(rs, "Quản lý khach hang", "Xóa khach hang thành công!");
+                CustomerService.getInstance().removeCustomer(temp.getID());
+                Util.showSuccess("Quản lý khách hàng", "Xóa khách hàng thành công!");
                 refreshTable();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {

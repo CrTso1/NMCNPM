@@ -13,11 +13,11 @@ public class Product {
 
     }
 
-    public Product(String productId, String productName, int productQuantity, String productUnit, String productDetail, int productPrice) {
+    public Product(String productId, String productName, int productQuantity,  String productDetail, int productPrice) {
         this.productId = productId;
         this.productName = productName;
         this.productQuantity = productQuantity;
-        this.productUnit = productUnit;
+
         this.productDetail = productDetail;
         this.productPrice = productPrice;
     }
@@ -46,13 +46,6 @@ public class Product {
         this.productQuantity = productQuantity;
     }
 
-    public String getProductUnit() {
-        return productUnit;
-    }
-
-    public void setProductUnit(String productUnit) {
-        this.productUnit = productUnit;
-    }
 
     public String getProductDetail() {
         return productDetail;

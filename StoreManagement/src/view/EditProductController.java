@@ -1,7 +1,8 @@
 package src.view;
 
 // import model va service
-import com.javafx.librarian.utils.Util;
+import src.service.ProductService;
+import src.utils.Util;
 import com.jfoenix.controls.JFXButton;
 
 //import controller.ProductController;
@@ -47,7 +48,9 @@ public class EditProductController implements Initializable {
     @FXML
     public TextField txtProductName;
     @FXML
-    public TextField txtProductUnit;
+    public TextField getTxtProductQuantity;
+    @FXML
+    public TextField txtProductQuantity;
     @FXML
     public RadioButton rdbTrong;
     @FXML
@@ -92,9 +95,9 @@ public class EditProductController implements Initializable {
     private void bindingData() {
         txtProductId.setText(String.valueOf(product.getProductId()));
         txtProductName.setText(product.getProductName());
-        txtProductUnit.setText(product.getProductUnit());
+        txtProductQuantity.setText("" + product.getProductQuantity());
         txtProductDetail.setText(product.getProductDetail());
-        txtProductPrice.setText("" + product.getProductPrice());
+        txtProductPrice.setText(""+product.getProductPrice());
 
     }
 
@@ -121,7 +124,7 @@ public class EditProductController implements Initializable {
         //VALIDATE
         if(txtProductName.getText().trim().equals("") ||
                 txtProductPrice.getText().trim().equals("") ||
-                txtProductUnit.getText().toString().trim().equals("") ||
+                txtProductQuantity.getText().toString().trim().equals("") ||
                 txtProductDetail.getText().trim().equals("")
         ) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -132,20 +135,28 @@ public class EditProductController implements Initializable {
         }
         //
 
-        String productID = txtProductId.getText();
+//        String productID = txtProductId.getText();
+//        String productName = txtProductName.getText();
+//        String productQuantity = txtProductQuantity.getText();
+//        String productUnit = txtProductPrice.getText();
+//        String productDetail = txtProductName.getText();
+//        String productPrice = txtProductPrice.getText();
+//
+//        Product product = new Product(productID, productName, Integer.parseInt(productQuantity), productUnit, productDetail, Integer.parseInt(productPrice));
+        String productId = txtProductId.getText();
         String productName = txtProductName.getText();
-        String productPrice = txtProductPrice.getText();
-        String productDetail = txtProductName.getText();
-        String productUnit = txtProductPrice.getText();
+        String productDetail = txtProductDetail.getText();
+        int unit = Integer.parseInt(txtProductQuantity.getText());
+        int price = Integer.parseInt(txtProductPrice.getText());
 
-        Product product = new Product(productID, productName, productPrice, productUnit, productDetail);
+        Product product = new Product(productId, productName, unit, productDetail, price);
 
-        int rs = ProductController.getInstance().editProduct(product);
-        Util.showSuccess(rs, "Quản lý sản phẩm", "Sửa sản phẩm thành công!");
+        ProductService.getInstance().updateProduct(product);
+        Util.showSuccess("Quản lý sản phẩm", "Sửa sản phẩm thành công!");
         productController.refreshTable();
         txtProductId.setText("");
         txtProductName.setText("");
-        txtProductUnit.setText("");
+        txtProductQuantity.setText("");
         txtProductPrice.setText("");
         txtProductDetail.setText("");
         Stage stage = (Stage) btnHuy.getScene().getWindow();

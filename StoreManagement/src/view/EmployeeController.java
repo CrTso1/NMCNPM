@@ -1,5 +1,6 @@
 package src.view;
 
+import src.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -78,8 +79,8 @@ public class EmployeeController implements Initializable {
         loadData();
 
         txtSearch.textProperty().addListener((observableValue, s, t1) -> {
-            listNV.clear();
-            listNV.addAll(EmployeeService.getInstance().searchNV(t1));
+            listEmployee.clear();
+            listEmployee.addAll(EmployeeService.getInstance().getEmployeeByID(t1));
         });
     }
 
@@ -88,7 +89,7 @@ public class EmployeeController implements Initializable {
     }
 
     private void loadData() {
-        listEmployee = FXCollections.observableArrayList(EmployeeService.getInstance().getAllNV());
+        listEmployee = FXCollections.observableArrayList(EmployeeService.getInstance().getAllEmployees());
         tbEmployee.setItems(listEmployee);
     }
 
@@ -103,7 +104,7 @@ public class EmployeeController implements Initializable {
 
     private void clearInput() {
         txtEmployeeName.setText("");
-        txtBonus.setText("");
+        txtEmployeeId.setText("");
         txtPassword.setText("");
         txtRole.setText("");
         txtUsername.setText("");
@@ -147,7 +148,7 @@ public class EmployeeController implements Initializable {
                 //
                 EditEmployeeController editEmployeeController = loader.getController();
                 editEmployeeController.setEmployeeController(this);
-                editEmployeeController.setEditNV(temp);
+                editEmployeeController.setEditEmployee(temp);
                 dialogStage.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -175,9 +176,9 @@ public class EmployeeController implements Initializable {
             // option != null.
             Optional<ButtonType> option = alert.showAndWait();
 
-             if (option.get() == ButtonType.OK) {
-                int rs = EmployeeService.getInstance().removeEmployee(temp.getID());
-                Util.showSuccess(rs, "Quản lý nhân viên", "Xóa nhân viên thành công!");
+            if (option.get() == ButtonType.OK) {
+                EmployeeService.getInstance().removeEmployee(temp.getID());
+                Util.showSuccess("Quản lý nhân viên", "Xóa nhân viên thành công!");
                 refreshTable();
                 clearInput();
             }

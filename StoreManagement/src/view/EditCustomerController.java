@@ -1,7 +1,8 @@
 package src.view;
 
 // import model va service
-import com.javafx.librarian.utils.Util;
+import src.service.CustomerService;
+import src.utils.*;
 import com.jfoenix.controls.JFXButton;
 
 //import Controller.CustomerController;
@@ -87,10 +88,10 @@ public class EditCustomerController implements Initializable {
         bindingData();
     }
     private void bindingData() {
-       // txtCustomerId.setText();
-        txtCustomerIsVip.setText(customer.getName());
+        // txtCustomerId.setText();
+        txtCustomerIsVip.setText("" + customer.isVIP());
         txtCustomerName.setText(customer.getName());
-        txtCustomerPoint.setText("" +customer.getPoint());
+        txtCustomerPoint.setText("" + customer.getPoint());
         txtCustomerPhone.setText(customer.getPhone());
 
     }
@@ -135,10 +136,10 @@ public class EditCustomerController implements Initializable {
         String customerPoint = txtCustomerPoint.getText();
         String customerPhone = txtCustomerPhone.getText();
 
-        Customer product = new Customer(customerId,customerName, customerIsVip, customerPhone, customerPoint);
+        Customer customer = new Customer(customerId, customerName,"","", customerPhone,  true, Integer.parseInt(customerPoint));
 
-        int rs = CustomerController.getInstance().editCustomer(customer);
-        Util.showSuccess(rs, "Quản lý khách hàng", "Sửa khách hàng thành công!");
+        CustomerService.getInstance().updateGoods(customer);
+        Util.showSuccess("Quản lý khách hàng", "Sửa khách hàng thành công!");
         customerController.refreshTable();
         txtCustomerId.setText("");
         txtCustomerIsVip.setText("");
