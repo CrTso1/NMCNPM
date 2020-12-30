@@ -1,8 +1,7 @@
 package src.view;
 
-//import com.javafx.librarian.dao.QuyenDAO;
-//import com.javafx.librarian.model.Account;
-//import com.javafx.librarian.service.AccountService;
+import src.model.Account;
+import src.service.AccountService;
 import com.jfoenix.controls.JFXButton;
 //import com.lowagie.text.Anchor;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -190,9 +189,6 @@ public class MainViewController implements Initializable {
 //                    break;
             }
         });
-
-        btnTrangChu.requestFocus();
-        btnTrangChuAction(null);
     }
 
     private void setStyleButtonSelect(){
@@ -239,37 +235,20 @@ public class MainViewController implements Initializable {
         if(user.getIdper()==1){
             menuItemInfo.setVisible(true);
             menuItemDMK.setVisible(false);
-            //DocGia
-            btnBanHang.setDisable(true);
-            btnQLSP.setDisable(true);
-            btnQLNV.setDisable(true);
-            btnBCTK.setDisable(true);
-            btnHT.setDisable(true);
+            //Quản trị viên
+
 
         }else{
-            if(user.getIdper() == 3) {
-                //ThuThu
+            if(user.getIdper() == 2) {
+                //Nhân viên
                 btnQLNV.setDisable(true);
+
             }
             menuItemInfo.setVisible(false);
             menuItemDMK.setVisible(true);
         }
     }
 
-    public void btnTrangChuAction(ActionEvent actionEvent) {
-        try {
-            if(indexButton.get()==0)
-                return;
-            indexButton.set(0);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/TrangChuView.fxml"));
-            AnchorPane frmDocgiaView = (AnchorPane) loader.load();
-            borderPaneMain.setCenter(frmDocgiaView);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void btnBanHangAction(ActionEvent actionEvent) {
         try {
@@ -277,7 +256,7 @@ public class MainViewController implements Initializable {
                 return;
             indexButton.set(1);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("./BanHang.fxml"));
+            loader.setLocation(getClass().getResource("BanHang.fxml"));
             AnchorPane banHangView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(banHangView);
         } catch (IOException e) {
@@ -291,7 +270,7 @@ public class MainViewController implements Initializable {
                 return;
             indexButton.set(2);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("./CustomerView.fxml"));
+            loader.setLocation(getClass().getResource("CustomerView.fxml"));
             AnchorPane customerView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(customerView);
 
@@ -307,7 +286,7 @@ public class MainViewController implements Initializable {
                 return;
             indexButton.set(3);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("./ProductView.fxml"));
+            loader.setLocation(getClass().getResource("ProductView.fxml"));
             AnchorPane productView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(productView);
             //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
@@ -332,41 +311,6 @@ public class MainViewController implements Initializable {
     }
 
 
-    public void MenuThongTinClicked(ActionEvent actionEvent) {
-        try {
-            if(indexButton.get()==7)
-                return;
-            indexButton.set(7);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/infoUserView.fxml"));
-            AnchorPane infoView = (AnchorPane) loader.load();
-
-            InfoUserController controller = loader.getController();
-            controller.setAccount(this.User);
-
-            borderPaneMain.setCenter(infoView);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void btnBCTKAction(ActionEvent actionEvent) {
-        try {
-            if(indexButton.get()==5)
-                return;
-            indexButton.set(5);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/MenuBaoCao.fxml"));
-            AnchorPane MTView = (AnchorPane) loader.load();
-            borderPaneMain.setCenter(MTView);
-
-            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public void MenuDangXuatClicked(ActionEvent actionEvent) throws IOException {
         String tilte = "Sign Out";
         String message = "Đăng xuất thành công!";
@@ -381,7 +325,7 @@ public class MainViewController implements Initializable {
 
         Stage stageLogin = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("./LoginView.fxml"));
+        loader.setLocation(getClass().getResource("LoginView.fxml"));
         AnchorPane rootLayout = loader.load();
 
         LoginViewController controller = loader.getController();
@@ -395,7 +339,7 @@ public class MainViewController implements Initializable {
         stageLogin.show();
     }
 
-    public void menuItemDMKClicked(ActionEvent actionEvent){
+    /*public void menuItemDMKClicked(ActionEvent actionEvent){
                 try {
                     String mk = User.getPassword();
                     // Load the fxml file and create a new stage for the popup dialog.
@@ -428,8 +372,8 @@ public class MainViewController implements Initializable {
                 }
             }
 
-
-    public void btnHeThongAction(ActionEvent actionEvent)
+*/
+    /*public void btnHeThongAction(ActionEvent actionEvent)
     {
         try {
             if(indexButton.get()==6)
@@ -443,7 +387,7 @@ public class MainViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void btnCollapseClicked(ActionEvent actionEvent) {
         final Animation slide = new Transition(){

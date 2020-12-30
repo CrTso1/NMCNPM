@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="paneMain" prefHeight="772.0" prefWidth="1337.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.MainViewController">
+<AnchorPane fx:id="paneMain" prefHeight="772.0" prefWidth="1337.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.MainViewController">
     <children>
         <AnchorPane fx:id="paneContent" layoutX="261.0" prefHeight="772.0" prefWidth="1043.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -23,8 +23,8 @@
                         </Label>
                                 <MenuButton fx:id="lbUsername" focusTraversable="false" layoutX="151.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="admin" textFill="#148ff5" wrapText="true">
                                     <items>
-                                        <MenuItem fx:id="menuItemInfo" mnemonicParsing="false" onAction="#MenuThongTinClicked" text="Thông tin" />
-                              <MenuItem fx:id="menuItemDMK" mnemonicParsing="false" onAction="#menuItemDMKClicked" text="Đổi mật khẩu" />
+                                        <MenuItem fx:id="menuItemInfo" mnemonicParsing="false" text="Thông tin" />
+                              <MenuItem fx:id="menuItemDMK" mnemonicParsing="false"  text="Đổi mật khẩu" />
                                         <MenuItem mnemonicParsing="false" onAction="#MenuDangXuatClicked" text="Đăng xuất" />
                                     </items>
                            <font>
@@ -81,7 +81,7 @@
                         <Font size="5.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnTrangChu" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="5.0" layoutX="15.0" layoutY="119.0" onAction="#btnTrangChuAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text=" Trang Chủ" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
+                <JFXButton fx:id="btnTrangChu" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="5.0" layoutX="15.0" layoutY="119.0"  prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text=" Trang Chủ" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgTrangChu" fill="#f5f3f3" glyphName="BANK" size="1.2em" wrappingWidth="30.0" />
                     </graphic>
@@ -89,7 +89,7 @@
                         <Font name="Verdana" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnBanHang" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutX="15.0" layoutY="169.0" onAction="#btnBanHangAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="Bán hàng" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                <JFXButton fx:id="btnBanHang" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutX="15.0" layoutY="169.0" onAction="#btnBanHangAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton"  text="Bán hàng" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgDG" fill="#f5f3f3" glyphName="USERS" size="1.2em" wrappingWidth="30.0" />
                     </graphic>
@@ -97,7 +97,7 @@
                         <Font name="Verdana" size="13.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnQLKH" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutX="15.0" layoutY="219.0" onAction="#btnQLKHAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="Quản lý khách hàng" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                <JFXButton fx:id="btnQLKH" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutX="15.0" layoutY="219.0" onAction="#btnQLKHAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton"  text="Quản lý khách hàng" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgSach" fill="#f5f3f3" glyphName="BOOK" size="1.2em" wrappingWidth="30.0" />
                     </graphic>
@@ -105,7 +105,7 @@
                         <Font name="Verdana" size="13.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnQLSP" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutX="15.0" layoutY="269.0" onAction="#btnQLSPAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="Quản lý sản phẩm" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                <JFXButton fx:id="btnQLSP" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutX="15.0" layoutY="269.0" onAction="#btnQLSPAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton"  text="Quản lý sản phẩm" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgMT" fill="#f5f3f3" glyphName="EXCHANGE" size="1.2em" wrappingWidth="30.0" />
                     </graphic>
@@ -113,7 +113,7 @@
                         <Font name="Verdana" size="13.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnQLNV" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="15.0" layoutY="319.0" onAction="#btnQLNVAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="Quản lý nhân viên" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                <JFXButton fx:id="btnQLNV" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="15.0" layoutY="319.0" onAction="#btnQLNVAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton"  text="Quản lý nhân viên" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgNV" fill="#f5f3f3" glyphName="USER_SECRET" size="1.2em" wrappingWidth="30.0" />
                     </graphic>
@@ -121,7 +121,7 @@
                         <Font name="Verdana" size="13.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnHT" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="15.0" layoutY="415.0" onAction="#btnHeThongAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="Hệ Thống" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                <JFXButton fx:id="btnHT" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="15.0" layoutY="415.0"  prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton"  text="Hệ Thống" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgHT" fill="#f5f3f3" glyphName="COG" size="1.2em" wrappingWidth="30.0" />
                     </graphic>
@@ -129,7 +129,7 @@
                         <Font name="Verdana" size="13.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btnBCTK" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="15.0" layoutY="367.0" onAction="#btnBCTKAction" prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="Báo Cáo Thống Kê" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                <JFXButton fx:id="btnBCTK" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="15.0" layoutY="367.0"  prefHeight="48.0" prefWidth="247.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton"  text="Báo Cáo Thống Kê" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIcon fx:id="imgBCTK" fill="#f5f3f3" glyphName="BAR_CHART" size="1.2em" wrappingWidth="30.0" />
                     </graphic>

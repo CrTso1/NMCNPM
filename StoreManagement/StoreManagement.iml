@@ -11,5 +11,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="charm-glisten-4.4.4" level="project" />
     <orderEntry type="library" name="charm-glisten-4.4.41" level="project" />
+    <orderEntry type="library" name="japser" level="project" />
   </component>
 </module>

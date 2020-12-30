@@ -30,6 +30,7 @@ import tray.notification.TrayNotification;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -113,7 +114,7 @@ public class LoginViewController implements Initializable {
         lbCreate2.setVisible(false);
         lbCreate3.setVisible(false);
         textFullName.setVisible(false);
-        cbbType.setVisible(false);
+        //cbbType.setVisible(false);
         dateBirthday.setVisible(false);
         btnSignInMove.setVisible(false);
         textUserLogin.requestFocus();
@@ -131,7 +132,7 @@ public class LoginViewController implements Initializable {
     }
 
     @FXML
-    public void btnSignIn_Click(ActionEvent event) {
+    public void btnSignIn_Click(ActionEvent event) throws SQLException {
         Account user = AccountService.getInstance().getUser(textUserLogin.getText(), passUserLogin.getText());
         if(user!=null){
             String tilte = "Sign In";
@@ -264,7 +265,7 @@ public class LoginViewController implements Initializable {
     }
 
     @FXML
-    public void btnSignUp_Click(ActionEvent event) {
+    public void btnSignUp_Click(ActionEvent event) throws SQLException {
         boolean check = AccountService.getInstance().checkCreateUser(textUserCreate.getText(), textEmail.getText());
 
         if(check){

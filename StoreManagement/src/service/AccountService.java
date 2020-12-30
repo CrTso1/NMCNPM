@@ -4,6 +4,7 @@ import src.service.AccountService;
 import src.dao.AccountDao;
 import src.model.Account;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class AccountService {
@@ -16,22 +17,22 @@ public class AccountService {
         return instance;
     }
 
-    public List<Account> getAllUsers(){
+    public List<Account> getAllUsers() throws SQLException {
         return AccountDao.getInstance().getAllUsers();
     }
 
-    public void addUser(Account user){
+    public void addUser(Account user) throws SQLException {
         AccountDao.getInstance().addUser(user);
     }
 
-    public Account getUser(String username, String password){
+    public Account getUser(String username, String password) throws SQLException {
         return AccountDao.getInstance().getUser(username, password);
     }
-    public Account getUserById(String username) {
+    public Account getUserById(String username) throws SQLException {
         return AccountDao.getInstance().getUserById(username);
     }
 
-    public boolean checkCreateUser(String username, String email){
+    public boolean checkCreateUser(String username, String email) throws SQLException {
         return AccountDao.getInstance().checkCreateUser(username, email);
     }
 
@@ -39,5 +40,5 @@ public class AccountService {
         return AccountDao.getInstance().editUser(user);
     }
 
-    public List<Account> getUserNoOwner(){return AccountDao.getInstance().getUserNoOwner();}
+    public List<Account> getUserNoOwner() throws SQLException {return AccountDao.getInstance().getUserNoOwner();}
 }
