@@ -256,7 +256,7 @@ public class MainViewController implements Initializable {
                 return;
             indexButton.set(1);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("BanHang.fxml"));
+            loader.setLocation(getClass().getResource("../view/BanHang.fxml"));
             AnchorPane banHangView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(banHangView);
         } catch (IOException e) {
@@ -270,7 +270,7 @@ public class MainViewController implements Initializable {
                 return;
             indexButton.set(2);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("CustomerView.fxml"));
+            loader.setLocation(getClass().getResource("../view/CustomerView.fxml"));
             AnchorPane customerView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(customerView);
 
@@ -286,7 +286,7 @@ public class MainViewController implements Initializable {
                 return;
             indexButton.set(3);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("ProductView.fxml"));
+            loader.setLocation(getClass().getResource("../view/ProductView.fxml"));
             AnchorPane productView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(productView);
             //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó

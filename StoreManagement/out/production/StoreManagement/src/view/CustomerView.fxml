@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="paneDocGia" prefHeight="680.0" prefWidth="1043.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.CustomerController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView fx:id="tableCustomer" prefHeight="443.0" prefWidth="1035.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);" stylesheets="@../css/tableTheme.css">
+            <TableView fx:id="tableCustomer" prefHeight="443.0" prefWidth="1035.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
                <columns>
-                  <TableColumn fx:id="colCustomerId" prefWidth="100.0" text="Mã khách hàng" />
+                  <TableColumn fx:id="colCustomerID" prefWidth="100.0" text="Mã khách hàng" />
                   <TableColumn fx:id="colCustomerName" prefWidth="37.0" text="Tên khách hàng" />
                   <TableColumn fx:id="colCustomerPoint" prefWidth="36.0" text="Điểm" />
                   <TableColumn fx:id="colCustomerIsVip" prefWidth="75.0" text="Vip" />
@@ -31,27 +38,27 @@
                <center>
                   <AnchorPane prefHeight="259.0" prefWidth="1035.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
                      <children>
-                        <JFXButton fx:id="btnAddCustomer" layoutX="8.0" layoutY="38.0" onAction="#btnThemDGClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="38.0">
+                        <JFXButton fx:id="btnAddCustomer" layoutX="8.0" layoutY="38.0" onAction="#btnAddCustomer_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="38.0">
                            <font>
                               <Font name="Verdana" size="13.0" />
                            </font></JFXButton>
-                        <JFXButton fx:id="btnDeleteCustomer" layoutX="162.0" layoutY="38.0" onAction="#btnXoaDGClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="XÓA" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="38.0">
+                        <JFXButton fx:id="btnDeleteCustomer" layoutX="162.0" layoutY="38.0" onAction="#btnDeleteCustomer_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="XÓA" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="38.0">
                            <font>
                               <Font name="Verdana" size="13.0" />
                            </font></JFXButton>
-                        <JFXButton fx:id="btnEditCustomer" layoutX="84.0" layoutY="38.0" onAction="#btnSuaDGClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="SỬA" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="38.0">
+                        <JFXButton fx:id="btnEditCustomer" layoutX="84.0" layoutY="38.0" onAction="#btnEditCustomer_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="SỬA" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="38.0">
                            <font>
                               <Font name="Verdana" size="13.0" />
                            </font></JFXButton>
-                        <JFXButton fx:id="btnRefreshCustomer" layoutX="238.0" layoutY="38.0" onAction="#btnLamMoiClick" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: yellow;" text="LÀM MỚI" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="38.0">
+                        <JFXButton fx:id="btnRefreshCustomer" layoutX="238.0" layoutY="38.0" onAction="#btnRefreshCustomer_Click" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: yellow;" text="LÀM MỚI" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="38.0">
                            <font>
                               <Font name="Verdana" size="13.0" />
                            </font></JFXButton>
-                        <TextField fx:id="textTimKiemDG" layoutX="837.0" layoutY="35.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@../css/textFieldTheme.css" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="35.0">
+                        <TextField fx:id="textSearch" layoutX="837.0" layoutY="35.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="35.0">
                            <font>
                               <Font name="Verdana" size="13.0" />
                            </font></TextField>
-                        <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="46.0" layoutY="72.0" prefHeight="173.0" prefWidth="939.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" stylesheets="@../css/themes.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="72.0">
+                        <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="46.0" layoutY="72.0" prefHeight="173.0" prefWidth="939.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="72.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                  <children>
@@ -71,7 +78,7 @@
                                        <font>
                                           <Font name="Verdana" size="13.0" />
                                        </font></Label>
-                                    <TextField fx:id="textTenDocGia" editable="false" prefWidth="190.0">
+                                    <TextField fx:id="txtCustomerName" editable="false" prefWidth="190.0">
                                        <font>
                                           <Font name="Verdana" size="13.0" />
                                        </font></TextField>
@@ -83,7 +90,7 @@
                                        <font>
                                           <Font name="Verdana" size="13.0" />
                                        </font></Label>
-                                    <TextField fx:id="txtCustomerPoint" editable="false" prefWidth="190.0">
+                                    <TextField fx:id="txtCustomerIsVip" editable="false" prefWidth="190.0">
                                        <font>
                                           <Font name="Verdana" size="13.0" />
                                        </font></TextField>
@@ -91,7 +98,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                  <children>
-                                    <Label fx:id="txtCustomerPoint" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Điểm">
+                                    <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Điểm">
                                        <font>
                                           <Font name="Verdana" size="13.0" />
                                        </font></Label>

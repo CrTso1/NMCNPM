@@ -39,7 +39,7 @@ public class EmployeeController implements Initializable {
     @FXML
     public TableColumn<Employee, Long> tbcEmployeeSalary;
     @FXML
-    public TableColumn<Employee, String> tbcEmployeeUsername;
+    public TableColumn<Employee, String> tbcEmployeeUserName;
     @FXML
     public TableColumn<Employee, String> tbcEmployeePassword;
     @FXML
@@ -89,7 +89,14 @@ public class EmployeeController implements Initializable {
     }
 
     private void setCell() {
+        //TODO: thêm cột Salary
         tbcEmployeeName.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
+        tbcEmployeeId.setCellValueFactory(new PropertyValueFactory<Employee, String>("ID"));
+       // tbcEmployeeSalary.setCellValueFactory(new PropertyValueFactory<Employee, Long>("Salary"));
+        tbcEmployeeShift.setCellValueFactory(new PropertyValueFactory<Employee, String>("shift"));
+        tbcEmployeeRole.setCellValueFactory(new PropertyValueFactory<Employee, String>("Role"));
+        tbcEmployeeUserName.setCellValueFactory(new PropertyValueFactory<Employee, String>("EmployeeName"));
+        tbcEmployeePassword.setCellValueFactory(new PropertyValueFactory<Employee, String>("passWord"));
     }
 
     private void loadData() {

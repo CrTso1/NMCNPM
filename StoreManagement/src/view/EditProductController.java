@@ -48,9 +48,8 @@ public class EditProductController implements Initializable {
     @FXML
     public TextField txtProductName;
     @FXML
-    public TextField getTxtProductQuantity;
-    @FXML
     public TextField txtProductQuantity;
+
     @FXML
     public RadioButton rdbTrong;
     @FXML
@@ -79,9 +78,9 @@ public class EditProductController implements Initializable {
             panelEditProduct.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
         });
 
-        txtProductId.setDisable(true);
-
-
+    }
+    public Product getEditProduct(){
+        return this.product;
     }
 
     public void setProductController(ProductController product) {
