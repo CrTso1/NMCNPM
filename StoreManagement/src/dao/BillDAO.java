@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import src.model.Bill;
+import src.model.Customer;
 import src.model.Employee;
 import src.model.Product;
 
@@ -22,28 +23,53 @@ public class BillDAO {
         }
         return instance;
     }
+//    public List<Bill> getAllBills() {
+//        List<Bill> listBill = new ArrayList<>();
+//        try {
+//
+//            String sql = "SELECT * FROM Bill ";
+//            Connection connection = getConnection();
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Bill b = new Bill();
+//                b.setIDOrder(rs.getInt("IDOrder"));
+//                b.setDate(rs.getString("Ngay"));
+//                b.setTotal(rs.getInt("Total_price"));
+//                listBill.add(b);
+//            }
+//
+//            return listBill;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        return null;
+//    }
+
     public List<Bill> getAllBills() {
         List<Bill> listBill = new ArrayList<>();
-        try {
 
-            String sql = "SELECT * FROM Bill ";
-            Connection connection = getConnection();
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+        try (Connection conn = JDBCConnection.getConnection()) {
+            String query = null;
+            query = "select * from bill";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
                 Bill b = new Bill();
-                b.setIDOrder(rs.getInt("IDOrder"));
-                b.setDate(rs.getString("Ngay"));
-                b.setTotal(rs.getInt("Total_price"));
+                b.setIDOrder(resultSet.getInt("IDOrder"));
+                b.setDate(resultSet.getString("Ngay"));
+                b.setTotal(resultSet.getInt("Total_price"));
                 listBill.add(b);
-            }
 
-            return listBill;
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+                listBill.add(b);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        return null;
+        return listBill;
     }
 
     public Bill getBillByID(int IDOrder) {
@@ -68,7 +94,7 @@ public class BillDAO {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return null;
+        return b;
     }
     public void addBill(Bill b) {
         try {
@@ -150,7 +176,7 @@ public class BillDAO {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return null;
+        return listBill;
     }
 
 }

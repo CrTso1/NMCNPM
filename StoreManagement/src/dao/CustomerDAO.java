@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import src.model.Customer;
+import src.model.Product;
 
 public class CustomerDAO {
 
@@ -21,30 +22,58 @@ public class CustomerDAO {
 		}
 		return instance;
 	}
+//	public List<Customer> getAllCustomers() {
+//		List<Customer> listCustomer = new ArrayList<>();
+//		try {
+//
+//			String sql = "SELECT * FROM Customer";
+//			Connection connection = getConnection();
+//			PreparedStatement ps = connection.prepareStatement(sql);
+//			ResultSet resultSet = ps.executeQuery();
+//			while (resultSet.next()) {
+//				Customer g = new Customer();
+//				g.setID(resultSet.getString("IDCustomer"));
+//				g.setName(resultSet.getString("name"));
+//				g.setPhone(resultSet.getString("phone_number"));
+//				g.setPoint(resultSet.getInt("Points"));
+//				g.setVIP(resultSet.getBoolean("VIP"));
+//				g.setAddress(resultSet.getString("address"));
+//				listCustomer.add(g);
+//			}
+//			return listCustomer;
+//		} catch (SQLException ex) {
+//			Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+//		}
+//
+//		return null;
+//	}
+
 	public List<Customer> getAllCustomers() {
 		List<Customer> listCustomer = new ArrayList<>();
-		try {
 
-			String sql = "SELECT * FROM Customer";
-			Connection connection = getConnection();
-			PreparedStatement ps = connection.prepareStatement(sql);
+		try (Connection conn = JDBCConnection.getConnection()) {
+			String query = null;
+			query = "select * from customer";
+			PreparedStatement ps = conn.prepareStatement(query);
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
 				Customer g = new Customer();
-				g.setID(resultSet.getString("id"));
-				g.setName(resultSet.getString("name"));
-				g.setPhone(resultSet.getString("phone_number"));
-				g.setPoint(resultSet.getInt("accumulatedPoints"));
-				g.setVIP(resultSet.getBoolean("VIP"));
-				g.setAddress(resultSet.getString("address"));
+				g.setID(resultSet.getString(1));
+				g.setName(resultSet.getString(2));
+				g.setPhone(resultSet.getString(4));
+				g.setPoint(resultSet.getInt(7));
+				g.setVIP(resultSet.getBoolean(5));
+				g.setAddress(resultSet.getString(3));
 				listCustomer.add(g);
+
+				listCustomer.add(g);
+
 			}
-			return listCustomer;
-		} catch (SQLException ex) {
-			Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		return null;
+		return listCustomer;
 	}
 
 	public List<Customer> getCustomersByName(String name) {
@@ -57,7 +86,7 @@ public class CustomerDAO {
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
 				Customer g = new Customer();
-				g.setID(resultSet.getString("id"));
+				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
 				g.setPoint(resultSet.getInt("Points"));
@@ -71,7 +100,7 @@ public class CustomerDAO {
 			Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
-		return null;
+		return listCustomers;
 	}
 
 	public void removeCustomer(String IDCustomer){
@@ -95,7 +124,7 @@ public class CustomerDAO {
 	public void updateCustomer(Customer g) {
 		try {
 			Connection connection = getConnection();
-			String sql = "UPDATE Customer SET name =? ,phone =?,point=?, address = ? VIP = ? "
+			String sql = "UPDATE Customer SET name =? ,phone =?, Points=?, address = ? VIP = ? "
 					+" WHERE IDCustomer =?";
 
 			PreparedStatement ps = connection.prepareStatement(sql);
@@ -125,13 +154,12 @@ public class CustomerDAO {
 			Customer g = new Customer();
 			while (resultSet.next()) {
 
-				g.setID(resultSet.getString("id"));
+				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
 				g.setPoint(resultSet.getInt("Points"));
 				g.setVIP(resultSet.getBoolean("VIP"));
 				g.setAddress(resultSet.getString("address"));
-
 			}
 
 			return g;
@@ -145,7 +173,7 @@ public class CustomerDAO {
 		Customer g = new Customer();
 		try {
 
-			String sql = "SELECT * FROM Customer WHERE phone =? ";
+			String sql = "SELECT * FROM Customer WHERE phone_number =? ";
 			Connection connection = getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, phone);
@@ -171,7 +199,7 @@ public class CustomerDAO {
 		try {
 			Connection connection = getConnection();
 
-			String sql = "INSERT INTO Customer (id,name,phone_number,point, address, VIP, DoB)"
+			String sql = "INSERT INTO Customer (IDCustomer, name, phone_number, Points, address, VIP, DoB)"
 					+ " VALUES (?,?,?,?,?,?)";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, g.getID());

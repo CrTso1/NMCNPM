@@ -98,13 +98,11 @@ public class EmployeeDAO {
                 listEmployee.add(Employee);
 
             }
-            return listEmployee;
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return null;
-    }
+        return listEmployee;    }
 
     public void addEmployee(Employee Employee) {
         try {
@@ -155,7 +153,7 @@ public class EmployeeDAO {
             ps1.setString(1, IDEmployee);
             int rs1 = ps1.executeUpdate();
 
-            String sql = "DELETE FROM Employeeoop WHERE IDEmployee = ? ";
+            String sql = "DELETE FROM Employee WHERE ID = ? ";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, IDEmployee);
             int rs = ps.executeUpdate();
@@ -337,12 +335,11 @@ public class EmployeeDAO {
                 listE.add(ad);
 
             }
-            return listE;
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return null;
+        return listE;
     }
 
     public void updateEmployeePassword(Employee Employee, String newPass) {
