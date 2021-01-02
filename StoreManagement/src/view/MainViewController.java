@@ -301,7 +301,7 @@ public class MainViewController implements Initializable {
                 return;*/
             indexButton.set(4);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("test.fxml"));
+            loader.setLocation(getClass().getResource("../view/EmployeeView.fxml"));
             AnchorPane employeeView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(employeeView);
             //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó

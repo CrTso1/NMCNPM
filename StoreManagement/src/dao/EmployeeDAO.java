@@ -1,10 +1,11 @@
 package src.dao;
 
 import static src.dao.JDBCConnection.getConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,25 +23,26 @@ public class EmployeeDAO {
         }
         return instance;
     }
-    public List<Employee> getAllEmployees() {
+    /*public List<Employee> getAllEmployees() {
         List<Employee> listEmployee = new ArrayList<>();
         try {
 
-            String sql = "SELECT * FROM EMPLOYEE ";
+            String sql = "select * from employee";
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 Employee Employee = new Employee();
-                Employee.setID(resultSet.getString("ID"));
-                Employee.setName(resultSet.getString("name"));
-                Employee.setRole(resultSet.getString("Role"));
-                Employee.setDoB(resultSet.getString("DOB"));
-                Employee.setAddress(resultSet.getString("address"));
-                Employee.setPhone(resultSet.getString("phone_number"));
-                Employee.setSalary(resultSet.getInt("Salary"));
-                Employee.setEmployeeName(resultSet.getString("EmployeeName"));
-                Employee.setPassWord(resultSet.getString("Password"));
+                Employee.setID(resultSet.getString(1));
+                Employee.setName(resultSet.getString(2));
+                Employee.setRole(resultSet.getString(6));
+                Employee.setDoB(resultSet.getString(4));
+                Employee.setAddress(resultSet.getString(3));
+                Employee.setShift(resultSet.getString(7));
+                Employee.setPhone(resultSet.getString(5));
+                Employee.setSalary(resultSet.getInt(8));
+                Employee.setEmployeeName(resultSet.getString(9));
+                Employee.setPassWord(resultSet.getString(10));
                 listEmployee.add(Employee);
 
             }
@@ -50,6 +52,35 @@ public class EmployeeDAO {
         }
 
         return null;
+    }*/
+    public List<Employee> getAllEmployees() {
+        List<Employee> listEmployee = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getConnection()) {
+            String query = null;
+            query = "select * from employee";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Employee Employee = new Employee();
+                Employee.setID(resultSet.getString(1));
+                Employee.setName(resultSet.getString(2));
+                Employee.setRole(resultSet.getString(6));
+                Employee.setDoB(resultSet.getString(4));
+                Employee.setAddress(resultSet.getString(3));
+                Employee.setShift(resultSet.getString(7));
+                Employee.setPhone(resultSet.getString(5));
+                Employee.setSalary(resultSet.getLong(8));
+                Employee.setEmployeeName(resultSet.getString(9));
+                Employee.setPassWord(resultSet.getString(10));
+                listEmployee.add(Employee);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listEmployee;
     }
 
     public List<Employee> getAllEmployeeNames() {

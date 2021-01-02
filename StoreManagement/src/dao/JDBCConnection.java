@@ -1,25 +1,24 @@
 package src.dao;
+
+import src.utils.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class JDBCConnection {
-    public static Connection getConnection() throws SQLException{
-        //need dataBase name
-        final String url = "jdbc:sqlserver://localhost:1433;databaseName=";
-        final String Employee = "";
-        final String pass = "";
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection connection = DriverManager.getConnection(url, Employee, pass);
+    public static Connection getConnection(){
+        String url = Util.URL_JDBC;
+        String username = Util.USERNAME_JDBC;
+        String password = Util.PASSWORD_JDBC;
 
-            return DriverManager.getConnection(url,Employee,pass);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException e) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
         }
         return null;
     }
-
 }
