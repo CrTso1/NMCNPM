@@ -28,11 +28,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/MainView.fxml"));
-            // loader.setLocation(getClass().getResource("view/MainView.fxml"));
             rootLayout = loader.load();
-
-            //   LoginViewController controller = loader.getController();
-            // controller.setMainStage(primaryStage);
 
             MainViewController controller = loader.getController();
             Account user = new Account("", "", 1, "", "");

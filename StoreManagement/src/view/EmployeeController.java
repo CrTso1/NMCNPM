@@ -1,5 +1,7 @@
 package src.view;
 
+import javafx.scene.control.cell.PropertyValueFactory;
+import src.model.Product;
 import src.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,11 +37,13 @@ public class EmployeeController implements Initializable {
     @FXML
     public TableColumn<Employee, String> tbcEmployeeBonus;
     @FXML
-    public TableColumn<Employee, Date> tbcEmployeeSalary;
+    public TableColumn<Employee, Long> tbcEmployeeSalary;
     @FXML
     public TableColumn<Employee, String> tbcEmployeeUsername;
     @FXML
     public TableColumn<Employee, String> tbcEmployeePassword;
+    @FXML
+    public TableColumn<Employee, String> tbcEmployeeId;
     @FXML
     public TextField txtEmployeeId;
     @FXML
@@ -78,14 +82,14 @@ public class EmployeeController implements Initializable {
         setCell();
         loadData();
 
-        txtSearch.textProperty().addListener((observableValue, s, t1) -> {
+        /*txtSearch.textProperty().addListener((observableValue, s, t1) -> {
             listEmployee.clear();
             listEmployee.addAll(EmployeeService.getInstance().getEmployeeByID(t1));
-        });
+        });*/
     }
 
     private void setCell() {
-        //hien thi thong tin
+        tbcEmployeeName.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
     }
 
     private void loadData() {
