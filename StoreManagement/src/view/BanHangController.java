@@ -1,6 +1,7 @@
 package src.view;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -99,7 +100,7 @@ public class BanHangController implements Initializable{
     private Button selectProdButton;
 
     private ObservableList<Product> listProduct;
-    private ObservableList<Product> billProdList;
+    ObservableList<Product> billProdList = FXCollections.observableArrayList();
     private Map<String, Product> mapProduct = new HashMap<String, Product>();
 
     private Customer customer;
@@ -120,7 +121,7 @@ public class BanHangController implements Initializable{
         loadData();
         searchProduct.textProperty().addListener((observableValue, s, t1) -> {
             listProduct.clear();
-            //TO-DO Tìm kiếm theo ID  listProduct.addAll(ProductService.getInstance().search(t1));
+            listProduct.addAll(ProductService.getInstance().getProductByID(Integer.parseInt(t1)));
         });
 
         bilNameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
@@ -153,27 +154,34 @@ public class BanHangController implements Initializable{
     public void addProducttoBill (ActionEvent e) {
         Product newProduct = new Product();
         String name = productNameText.getText();
+        System.out.println(name);
         newProduct.setProductName(name);
         int quantity = Integer.parseInt(quantityText.getText());
+        System.out.println(quantity);
         newProduct.setProductQuantity(quantity);
         newProduct.setProductPrice(currentPrice);
-
-        for(Product prod : billProdList){
-            if(prod.getProductName().equals(name)){
-                int newQuantity = prod.getProductQuantity() + quantity;
-                prod.setProductQuantity(newQuantity);
-                totalPrice += currentPrice*quantity;
-                totalPrice *= currentDiscount;
-                totalText.setText("" + totalPrice);
-                return;
+        // nếu trong giỏ hàng đã có sản phẩm, duyệt lấy tổng sản phẩm
+        if (billProdList != null) {
+            for (Product prod : billProdList) {
+                if (prod.getProductName().equals(name)) {
+                        int newQuantity = prod.getProductQuantity() + quantity;
+                        prod.setProductQuantity(newQuantity);
+                        totalPrice += currentPrice * quantity;
+                        totalPrice *= currentDiscount;
+                        totalText.setText("" + totalPrice);
+                        return;
+                }
             }
         }
-        billProdList.add(newProduct);
+        System.out.println(currentPrice);
 
+        billProdList.add(newProduct);
+        if (billProdList == null)
+            System.out.printf("Bill đang null");
         mapProduct.put(newProduct.getProductName(), newProduct);
 
         totalPrice += currentPrice*quantity;
-        totalPrice *= currentDiscount;
+        //totalPrice *= currentDiscount;
         totalText.setText("" + totalPrice);
         currentPrice = 0;
     }

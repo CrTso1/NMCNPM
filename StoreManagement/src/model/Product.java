@@ -1,6 +1,8 @@
 package src.model;
 
 
+import src.utils.Util;
+
 public class Product {
     private String productId;
     private String productName;
@@ -10,7 +12,12 @@ public class Product {
     private int productPrice;
     
     public Product(){
+        this.productId = "";
+        this.productName = "";
+        this.productQuantity =0;
 
+        this.productDetail = "";
+        this.productPrice = 0;
     }
 
     public Product(String productId, String productName, int productQuantity,  String productDetail, int productPrice) {

@@ -57,9 +57,9 @@ public class CustomerController implements Initializable {
     @FXML
     public Button btnEditCustomer;
     @FXML
-    public TextField textSearch;
+    public Button btnRefreshCustomer;
     @FXML
-    public ImageView imgAnhBia;
+    public TextField textSearch;
     //endregion
 
     //region controller
@@ -72,11 +72,6 @@ public class CustomerController implements Initializable {
         loadData();
 
         //check permission
-        if(true) {
-            btnAddCustomer.setVisible(false);
-            btnDeleteCustomer.setVisible(false);
-            btnEditCustomer.setVisible(false);
-        }
 
         txtCustomerId.setEditable(false);
         txtCustomerIsVip.setEditable(false);
@@ -206,5 +201,8 @@ public class CustomerController implements Initializable {
             alert.showAndWait();
         }
 
+    }
+    public void btnRefreshCustomer_Click(ActionEvent event){
+        refreshTable();
     }
 }

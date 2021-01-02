@@ -66,8 +66,6 @@ public class CustomerDAO {
 				g.setAddress(resultSet.getString(3));
 				listCustomer.add(g);
 
-				listCustomer.add(g);
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -59,7 +59,7 @@ public class ProductController implements Initializable {
     @FXML
     public TextField textSearch;
     @FXML
-    public AnchorPane panelSach;
+    public AnchorPane panelProduct;
     @FXML
     public ImageView imgAnhBia;
     //endregion
@@ -73,18 +73,11 @@ public class ProductController implements Initializable {
         setCell();
         loadData();
 
-        //check permission
-        if(true) {
-            btnAddProduct.setVisible(false);
-            btnDeleteProduct.setVisible(false);
-            btnEditProduct.setVisible(false);
-        }
-
         txtProductId.setEditable(false);
         txtProductName.setEditable(false);
         txtProductPrice.setEditable(false);
-        txtProductPrice.setEditable(false);
         txtProductQuantity.setEditable(false);
+        txtProductDetail.setEditable(false);
 
         textSearch.textProperty().addListener((observableValue, s, t1) -> {
             listProduct.clear();
@@ -97,7 +90,7 @@ public class ProductController implements Initializable {
         colProductName.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
         colProductDetail.setCellValueFactory(new PropertyValueFactory<Product, String>("productDetail"));
         colProductPrice.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productPrice"));
-        colProductQuantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
+        colProductQuantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productQuantity"));
     }
 
     private void loadData() {
