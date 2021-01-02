@@ -297,11 +297,11 @@ public class MainViewController implements Initializable {
 
     public void btnQLNVAction(ActionEvent actionEvent) {
         try {
-            if(indexButton.get()==4)
-                return;
+            /*if(indexButton.get()==4)
+                return;*/
             indexButton.set(4);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("./EmployeeView.fxml"));
+            loader.setLocation(getClass().getResource("test.fxml"));
             AnchorPane employeeView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(employeeView);
             //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
