@@ -81,6 +81,7 @@ public class EmployeeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
+       // bindingData();
 
         /*txtSearch.textProperty().addListener((observableValue, s, t1) -> {
             listEmployee.clear();
@@ -105,7 +106,13 @@ public class EmployeeController implements Initializable {
     }
 
     public void bindingData() {
-        // binding data
+        Employee temp = tbEmployee.getSelectionModel().getSelectedItem();
+        txtEmployeeId.setText(temp.getID());
+        txtEmployeeName.setText(temp.getName());
+        txtEmployeeSalary.setText(""+temp.getSalary());
+        txtEmployeeUsername.setText(temp.getEmployeeName());
+        txtEmployeePassword.setText(temp.getPassWord());
+        txtEmployeeShift.setText(temp.getShift());
     }
 
     public void refreshTable() {
@@ -124,7 +131,7 @@ public class EmployeeController implements Initializable {
     public void btnAdd_Click(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("./AddEmployeeDialog.fxml"));
+            loader.setLocation(getClass().getResource("../view/AddEmployeeDialog.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.

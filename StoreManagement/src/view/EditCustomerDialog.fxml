@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;" stylesheets="@../css/textFieldTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.AddCustomerztoBillController">
+<AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.EditCustomerController">
     <children>
-        <Pane fx:id="panelAddCustomer" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane fx:id="panelEditCustomer" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="267.0" layoutY="1.0" text="THÊM KHÁCH HÀNG" textFill="WHITE">
+                <Label layoutX="267.0" layoutY="1.0" text="SỨA KHÁCH HÀNG" textFill="WHITE">
                     <font>
                         <Font name="Verdana Bold" size="18.0" />
                     </font>
@@ -69,7 +69,7 @@
                             <font>
                                 <Font name="Verdana" size="13.0" />
                             </font></Label>
-                        <JFXComboBox fx:id="cbbIsVip" focusColor="#039ed3" prefHeight="27.0" prefWidth="190.0" unFocusColor="#cfcfcf" />
+                  <TextField fx:id="txtCustomerIsVip" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="2">
@@ -111,7 +111,6 @@
                             <font>
                                 <Font name="Verdana" size="13.0" />
                             </font></Label>
-                        <JFXComboBox fx:id="cbbAccount" focusColor="#039ed3" prefHeight="27.0" prefWidth="165.0" unFocusColor="#cfcfcf" />
                         <Pane prefHeight="50.0" prefWidth="13.0" />
                     </children>
                 </HBox>
@@ -119,7 +118,7 @@
         </GridPane>
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton fx:id="btnThem" layoutX="239.0" layoutY="6.0" onAction="#btnThem_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="LƯU">
+                <JFXButton fx:id="btnLuu" layoutX="239.0" layoutY="6.0" onAction="#btnLuu_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="LƯU">
                     <font>
                         <Font name="Verdana" size="13.0" />
                     </font></JFXButton>
@@ -136,6 +135,5 @@
                 <FontAwesomeIcon fx:id="iconClose" glyphName="CLOSE" size="1.5em" />
             </graphic>
         </JFXButton>
-      <Label layoutX="242.0" layoutY="37.0" text="Khách hàng chưa từng mua hàng!" />
     </children>
 </AnchorPane>

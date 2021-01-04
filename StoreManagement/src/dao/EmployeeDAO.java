@@ -222,32 +222,32 @@ public class EmployeeDAO {
 //    }
 
     public void updateEmployee(Employee Employee) {
-            try {
-                Connection connection = getConnection();
-                String sql = "UPDATE Employee SET Address = ?, Phone =?, Role = ?, Shift = ?, Salary = ?, "
-                        + "EmployeeName=?,Password=? , name =? WHERE ID =?";
+        try {
+            Connection connection = getConnection();
+            String sql = "UPDATE Employee SET Address = ?, phone_number =?, Role = ?, Shift = ?, Salary = ?, "
+                    + "EmployeeName=?,Password=? , name =? WHERE ID =?";
 
-                PreparedStatement ps = connection.prepareStatement(sql);
-                ps.setString(1, Employee.getID());
-                ps.setString(2, Employee.getAddress());
-                ps.setString(3, Employee.getPhone());
-                ps.setString(4, Employee.getRole());
-                ps.setString(6, Employee.getShift());
-                ps.setLong(5, Employee.getSalary());
-                ps.setString(7, Employee.getEmployeeName());
-                ps.setString(8, Employee.getPassWord());
-                ps.setString(9, Employee.getName());
-                int rs = ps.executeUpdate();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, Employee.getID());
+            ps.setString(2, Employee.getAddress());
+            ps.setString(3, Employee.getPhone());
+            ps.setString(4, Employee.getRole());
+            ps.setString(6, Employee.getShift());
+            ps.setLong(5, Employee.getSalary());
+            ps.setString(7, Employee.getEmployeeName());
+            ps.setString(8, Employee.getPassWord());
+            ps.setString(9, Employee.getName());
+            int rs = ps.executeUpdate();
 //            String sql0 = "DELETE FROM SalaryEmployee WHERE IDEmployee = ? ";
 //
 //            PreparedStatement ps0 = connection.prepareStatement(sql0);
 //            ps0.setInt(1, Employee.getIDEmployee());
 //            int rs0 = ps0.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
 
 
     public Employee getEmployeeByID(String IDEmployee) {
@@ -315,8 +315,8 @@ public class EmployeeDAO {
         List<Employee> listE = new ArrayList<>();
         try {
 
-            String sql = "select IDEmployee , FullName, Gender,DOB,Address,"
-                    + " Phone from Employeeoop where Role like 'Admin'";
+            String sql = "select IDEmployee , name, Gender,DOB,Address,"
+                    + " Phone from Employee where Role like 'Admin'";
 
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -345,7 +345,7 @@ public class EmployeeDAO {
     public void updateEmployeePassword(Employee Employee, String newPass) {
         try {
             Connection connection = getConnection();
-            String sql = "UPDATE Employeeoop SET Password=? WHERE IDEmployee =?";
+            String sql = "UPDATE Employee SET Password=? WHERE IDEmployee =?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(2, Employee.getID());
