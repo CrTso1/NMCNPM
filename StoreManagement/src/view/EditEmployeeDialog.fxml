@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;" stylesheets="@css/textFieldTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.EditEmployeeController">
+<AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.EditEmployeeController">
     <children>
-        <Pane fx:id="panelSuaNV" layoutY="-1.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+        <Pane fx:id="panelEditEmployee" layoutY="-1.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
             <children>
                 <Label alignment="CENTER" layoutY="5.0" prefHeight="30.0" prefWidth="631.0" text="CHỈNH SỬA NHÂN VIÊN" textAlignment="CENTER" textFill="WHITE">
                     <font>
@@ -29,7 +29,7 @@
         </Pane>
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton fx:id="btnCapNhat" layoutX="246.0" layoutY="7.0" onAction="#btnCapNhat_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #3ce02d;" text="LƯU">
+                <JFXButton fx:id="btnCapNhat" layoutX="246.0" layoutY="7.0" onAction="#btnLuu_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #3ce02d;" text="LƯU">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font></JFXButton>

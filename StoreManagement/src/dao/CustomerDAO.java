@@ -61,8 +61,8 @@ public class CustomerDAO {
 				g.setID(resultSet.getString(1));
 				g.setName(resultSet.getString(2));
 				g.setPhone(resultSet.getString(4));
-				g.setPoint(resultSet.getInt(7));
-				g.setVIP(resultSet.getBoolean(5));
+				g.setPoint(resultSet.getInt(6));
+				g.setDoB(""+resultSet.getDate(5));
 				g.setAddress(resultSet.getString(3));
 				listCustomer.add(g);
 
@@ -102,9 +102,10 @@ public class CustomerDAO {
 	}
 
 	public void removeCustomer(String IDCustomer){
+		//:TODO
 		try {
 			Connection connection = getConnection();
-			String sql = "DELETE FROM Orderoop WHERE IDCustomer = ? ";
+			String sql = "DELETE FROM Customer WHERE IDCustomer = ? ";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, IDCustomer);
 			int rs = ps.executeUpdate();
@@ -122,7 +123,7 @@ public class CustomerDAO {
 	public void updateCustomer(Customer g) {
 		try {
 			Connection connection = getConnection();
-			String sql = "UPDATE Customer SET name =? ,phone =?, Points=?, address = ? VIP = ? "
+			String sql = "UPDATE Customer SET name =? ,phone_number =?, Points=?, address = ? VIP = ?"
 					+" WHERE IDCustomer =?";
 
 			PreparedStatement ps = connection.prepareStatement(sql);
@@ -131,7 +132,7 @@ public class CustomerDAO {
 			ps.setString(2, g.getPhone());
 			ps.setInt(3, g.getPoint());
 			ps.setString(4, g.getAddress());
-			ps.setBoolean(5, g.isVIP());
+			ps.setString(5, "true");
 			int rs = ps.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -177,7 +178,7 @@ public class CustomerDAO {
 			ps.setString(1, phone);
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
-				g.setID(resultSet.getString("id"));
+				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
 				g.setPoint(resultSet.getInt("Points"));

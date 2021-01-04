@@ -83,6 +83,7 @@ public class CustomerController implements Initializable {
             listCustomer.clear();
             listCustomer.addAll(CustomerService.getInstance().getCustomersByID(Integer.parseInt(t1)));
         });
+
     }
 
     private void setCell() {

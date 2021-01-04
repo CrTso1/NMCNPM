@@ -13,7 +13,7 @@
          <children>
             <BorderPane layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="730.0" style="-fx-background-color: #d2d2d2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
                <center>
-                  <TableView fx:id="tbEmployee" onMouseClicked="#bindingData" prefHeight="443.0" prefWidth="718.0" style="-fx-background-radius: 5; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" >
+                  <TableView fx:id="tbEmployee" onMouseClicked="#bindingData" prefHeight="443.0" prefWidth="718.0" style="-fx-background-radius: 5; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                      <columns>
                         <TableColumn fx:id="tbcEmployeeId" prefWidth="100.0" text="Mã NV" />
                         <TableColumn fx:id="tbcEmployeeName" prefWidth="37.0" text="Tên NV" />
@@ -44,7 +44,7 @@
                                  <font>
                                     <Font name="Verdana" size="13.0" />
                                  </font></JFXButton>
-                              <TextField fx:id="textSearch" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch"  AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0">
+                              <TextField fx:id="textSearch" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0">
                                  <font>
                                     <Font name="Verdana" size="13.0" />
                                  </font></TextField>
@@ -91,18 +91,6 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Chức vụ">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                             <font>
-                                                <Font name="Verdana" size="13.0" />
-                                             </font></Label>
-                                          <TextField fx:id="txtEmployeeRole" editable="false" prefHeight="27.0" prefWidth="190.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
-                                       <children>
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản">
                                              <padding>
                                                 <Insets left="10.0" />
@@ -135,18 +123,6 @@
                                                 <Font name="Verdana" size="13.0" />
                                              </font></Label>
                                           <TextField fx:id="txtEmployeeSalary" editable="false" prefWidth="190.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
-                                       <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Thưởng">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                             <font>
-                                                <Font name="Verdana" size="13.0" />
-                                             </font></Label>
-                                          <TextField fx:id="txtEmployeeBonus" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                  </children>

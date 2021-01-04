@@ -220,14 +220,11 @@ public class BanHangController implements Initializable{
     public void findCusButt_Click(ActionEvent event){
         //TO-DO viết hàm get Khách hàng by ID
         Customer cus = CustomerService.getInstance().getCustomersByPhone(phoneText.getText());
-        if (cus != null) {
-            customer = cus;
-            cusNameText.setText(cus.getName());
-            pointText.setText("" + cus.getPoint());
-        } else {
+        if (cus == null){
             try {
+                System.out.println("cus null");
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("./AddCustomertoBillView.fxml"));
+                loader.setLocation(getClass().getResource("../view/AddCustomertoBillView.fxml"));
                 AnchorPane page = (AnchorPane) loader.load();
                 // Create the dialog Stage.
                 Stage dialogStage = new Stage();
@@ -242,6 +239,11 @@ public class BanHangController implements Initializable{
             catch (IOException e){
                 e.printStackTrace();
             }
+        } else  {
+            System.out.println("cus k null");
+            customer = cus;
+            cusNameText.setText(cus.getName());
+            pointText.setText("" + cus.getPoint());
         }
     }
 
