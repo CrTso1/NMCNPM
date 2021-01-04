@@ -61,8 +61,8 @@ public class CustomerDAO {
 				g.setID(resultSet.getString(1));
 				g.setName(resultSet.getString(2));
 				g.setPhone(resultSet.getString(4));
-				g.setPoint(resultSet.getInt(7));
-				g.setVIP(resultSet.getBoolean(5));
+				g.setPoint(resultSet.getInt(6));
+				g.setDoB(""+resultSet.getDate(5));
 				g.setAddress(resultSet.getString(3));
 				listCustomer.add(g);
 

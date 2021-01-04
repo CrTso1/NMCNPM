@@ -17,7 +17,7 @@
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView fx:id="tableCustomer" prefHeight="443.0" prefWidth="1035.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+            <TableView fx:id="tableCustomer" onMouseClicked="#bindingData" prefHeight="443.0" prefWidth="1035.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
                <columns>
                   <TableColumn fx:id="colCustomerID" prefWidth="100.0" text="Mã khách hàng" />
                   <TableColumn fx:id="colCustomerName" prefWidth="37.0" text="Tên khách hàng" />
