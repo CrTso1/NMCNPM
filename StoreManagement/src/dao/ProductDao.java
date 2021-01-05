@@ -72,13 +72,13 @@ public class ProductDao {
         return listProduct;
     }
 
-    public Product getProductByID(int ID) {
+    public Product getProductByID(String ID) {
             Product d = new Product();
         try {
             String sql = "SELECT * FROM Product Where id =?";
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, ID);
+            ps.setString(1, ID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 

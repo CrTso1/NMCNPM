@@ -30,7 +30,7 @@ public class ProductService {
         ProductDao.getInstance().addProduct(product);
     }
 
-    public Product getProductByID(int IDProduct){
+    public Product getProductByID(String IDProduct){
         return ProductDao.getInstance().getProductByID(IDProduct);
     }
 

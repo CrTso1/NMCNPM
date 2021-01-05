@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 import  src.model.Employee;
 import  src.model.Admin;
+import src.model.Product;
 
 public class EmployeeDAO {
     private static EmployeeDAO instance;
@@ -227,7 +228,7 @@ public class EmployeeDAO {
             ps.setString(2, Employee.getPhone());
             ps.setString(3, Employee.getRole());
             ps.setString(4, Employee.getShift());
-            ps.setLong(5, Employee.getSalary());
+            ps.setString(5,""+ Employee.getSalary());
             ps.setString(6, Employee.getName());
             ps.setString(7, Employee.getID());
             int rs = ps.executeUpdate();
@@ -241,6 +242,29 @@ public class EmployeeDAO {
         }
 
     }
+
+//    public void updateEmployee(Employee employee) {
+//        try {
+//            Connection connection = getConnection();
+//            String sql = "UPDATE employee SET Address = ?, phone_number =?, Role = ?, Shift = ?, Salary = ?, "
+//                    + "EmployeeName=?,Password=? , name =? WHERE ID =?";
+//            String sql2 = "update employee set name=?, Shift = ?, Salary = ?, Role = ?, EmployeeName = ?, Password = ? where ID=?";
+//            //UPDATE supermarket.employee SET EmployeeName = 'Tuan2000' WHERE (ID = 'IDEmp128');
+//            //UPDATE supermarket.employee SET name = 'Đình Tuấn', DOB = '2000-6-24', phone_number = '329413043', Shift = 'đêm', Salary = '99999999' WHERE (ID = 'NV120932');
+//            PreparedStatement ps = connection.prepareStatement(sql2);
+//            ps.setString(1, employee.getName());
+//            ps.setString(2, employee.getShift());
+//            ps.setString(3, ""+employee.getSalary());
+//            ps.setString(4, employee.getRole());
+//            ps.setString(5, employee.getEmployeeName());
+//            ps.setString(6, employee.getPassWord());
+//            ps.setString(7, employee.getID());
+//            int rs = ps.executeUpdate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
 
 
     public Employee getEmployeeByID(String IDEmployee) {
@@ -379,5 +403,42 @@ public class EmployeeDAO {
         }
 
         return null;
+    }
+
+    public List<Employee> getEmployeeByName(String name) {
+        List<Employee> listProduct = new ArrayList<>();
+        try {
+
+            String sql = "SELECT * FROM Product WHERE name like N'%"+name+"%'";
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+//                Employee d = new Employee();
+//                d.setID(rs.getString("id"));
+//                d.setProductName(rs.getString("name"));
+//                d.setProductQuantity(rs.getInt("quantity"));
+//                d.setProductPrice(rs.getInt("price"));
+//                d.setProductDetail(rs.getString("product_detail"));
+//                listProduct.add(d);
+                Employee u = new Employee();
+                u.setID(rs.getString("ID"));
+                u.setName(rs.getString("name"));
+                u.setRole(rs.getString("Role"));
+                u.setDoB(rs.getString("DOB"));
+                u.setAddress(rs.getString("address"));
+                u.setPhone(rs.getString("phone_number"));
+                u.setSalary(rs.getInt("Salary"));
+                u.setEmployeeName(rs.getString("EmployeeName"));
+                u.setPassWord(rs.getString("Password"));
+                listProduct.add(u);
+                return listProduct;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listProduct;
     }
 }

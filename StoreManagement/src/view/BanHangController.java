@@ -16,12 +16,9 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
-import javafx.scene.control.cell.PropertyValueFactory;
+import java.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -106,16 +103,22 @@ public class BanHangController implements Initializable{
     @FXML
     private Button selectProdButton;
 
+    @FXML
+    private Button refreshBtn;
+
     private ObservableList<Product> listProduct;
+    private ObservableList<Product> copyList;
     ObservableList<Product> billProdList = FXCollections.observableArrayList();
     private Map<String, Product> mapProduct = new HashMap<String, Product>();
 
     private Customer customer;
+    private Product product;
 
     private boolean isNewCus = true;
     private int totalPrice = 0;
     private int currentPrice = 0;
     private float currentDiscount;
+    private String curentID;
 
     public void setCustomer(Customer customer){
         this.customer = customer;
@@ -127,8 +130,31 @@ public class BanHangController implements Initializable{
         setCell();
         loadData();
         searchProduct.textProperty().addListener((observableValue, s, t1) -> {
-            listProduct.clear();
-            listProduct.addAll(ProductService.getInstance().getProductByID(Integer.parseInt(t1)));
+//            ObservableList<Product> copyList;
+//            for(Product prod : listProduct){
+//                copyList.add(prod);
+//            }
+            Product findProd = ProductService.getInstance().getProductByID(t1);
+            if(findProd != null) {
+                listProduct.clear();
+                listProduct.addAll(ProductService.getInstance().getProductByID(t1));
+            }
+            else{
+                listProduct.clear();
+                listProduct = FXCollections.observableArrayList(ProductService.getInstance().getAllProduct());
+                for(Product prod : listProduct){
+                    System.out.println(prod.getProductName());
+                }
+                productList.refresh();
+                productList.setItems(listProduct);
+            }
+
+//            }
+//            else productList.setItems(listProduct);
+//            listProduct.clear();
+////            listProduct.addAll(ProductService.getInstance().getProductByID(Integer.parseInt(t1)));
+//            listProduct.addAll(ProductService.getInstance().getProductByID(t1));
+//            productList.refresh();
         });
 
         bilNameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
@@ -142,6 +168,17 @@ public class BanHangController implements Initializable{
         productNameText.setDisable(true);
         quantityText.setText("1");
         currentPrice = selected.getProductPrice();
+        curentID = selected.getProductId();
+    }
+
+    public void refreshProductList (ActionEvent e) {
+        listProduct.clear();
+        listProduct = FXCollections.observableArrayList(ProductService.getInstance().getAllProduct());
+        for(Product prod : listProduct){
+            System.out.println(prod.getProductName());
+        }
+        productList.refresh();
+        productList.setItems(listProduct);
     }
 
     public void increase (ActionEvent e) {
@@ -153,7 +190,7 @@ public class BanHangController implements Initializable{
     public void decrease (ActionEvent e) {
         int quantity = Integer.parseInt(quantityText.getText());
         if(quantity > 1) {
-            quantity++;
+            quantity--;
             quantityText.setText("" + quantity);
         }
     }
@@ -163,6 +200,7 @@ public class BanHangController implements Initializable{
         String name = productNameText.getText();
         System.out.println(name);
         newProduct.setProductName(name);
+        newProduct.setProductId(curentID);
         int quantity = Integer.parseInt(quantityText.getText());
         System.out.println(quantity);
         newProduct.setProductQuantity(quantity);
@@ -171,11 +209,13 @@ public class BanHangController implements Initializable{
         if (billProdList != null) {
             for (Product prod : billProdList) {
                 if (prod.getProductName().equals(name)) {
+                    System.out.println("Tim thay");
                         int newQuantity = prod.getProductQuantity() + quantity;
                         prod.setProductQuantity(newQuantity);
                         totalPrice += currentPrice * quantity;
-                        totalPrice *= currentDiscount;
+//                        totalPrice *= currentDiscount;
                         totalText.setText("" + totalPrice);
+                        billList.refresh();
                         return;
                 }
             }
@@ -263,7 +303,18 @@ public class BanHangController implements Initializable{
         Bill newBill = new Bill(Util.generateID(Util.PREFIX_CODE.BILL), totalPrice, formatter.format(date));
         BillService.getInstance().addBill(newBill);
 
-        ;
+        for(Product myProduct : billProdList){
+            System.out.println(myProduct.getProductName());
+            int myQuantity = myProduct.getProductQuantity();
+            Product originProd = ProductService.getInstance().getProductByID(myProduct.getProductId());
+            int originQuantity = originProd.getProductQuantity();
+            originQuantity -= myQuantity;
+            originProd.setProductQuantity(originQuantity);
+            if(originQuantity == 0) ProductService.getInstance().removeProduct(originProd.getProductId());
+            else ProductService.getInstance().updateProduct(originProd);
+        }
+
+
     }
 
 }

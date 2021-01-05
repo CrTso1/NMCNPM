@@ -81,7 +81,8 @@ public class ProductController implements Initializable {
 
         textSearch.textProperty().addListener((observableValue, s, t1) -> {
             listProduct.clear();
-            listProduct.addAll(ProductService.getInstance().getProductByID(Integer.parseInt(t1)));
+//            listProduct.addAll(ProductService.getInstance().getProductByID(Integer.parseInt(t1)));
+            listProduct.addAll(ProductService.getInstance().getProductByID(t1));
         });
     }
 
@@ -201,5 +202,8 @@ public class ProductController implements Initializable {
             alert.showAndWait();
         }
 
+    }
+    public void btnRefreshCustomer_Click(ActionEvent event){
+        refreshTable();
     }
 }

@@ -44,6 +44,10 @@
                                  <font>
                                     <Font name="Verdana" size="13.0" />
                                  </font></JFXButton>
+                              <JFXButton fx:id="btnRefreshCustomer" layoutX="238.0" layoutY="38.0" onAction="#btnRefreshCustomer_Click" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: yellow;" text="LÀM MỚI" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="38.0">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></JFXButton>
                               <TextField fx:id="textSearch" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0">
                                  <font>
                                     <Font name="Verdana" size="13.0" />

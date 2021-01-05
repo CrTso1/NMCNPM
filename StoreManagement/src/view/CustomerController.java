@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -81,7 +82,13 @@ public class CustomerController implements Initializable {
 
         textSearch.textProperty().addListener((observableValue, s, t1) -> {
             listCustomer.clear();
-            listCustomer.addAll(CustomerService.getInstance().getCustomersByID(Integer.parseInt(t1)));
+            List<Customer> l = CustomerService.getInstance().getCustomersByName(t1);
+            if(l != null) System.out.println("Tim thay list");
+            else System.out.println("k tim thays");
+            for(Customer c : l){
+                System.out.println(c.getName());
+            }
+            listCustomer.addAll(CustomerService.getInstance().getCustomersByName(t1));
         });
 
     }

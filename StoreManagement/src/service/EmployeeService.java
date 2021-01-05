@@ -58,4 +58,8 @@ public class EmployeeService {
     public Employee getEmployeeByUsername(String username, String passWord){
         return EmployeeDAO.getInstance().getEmployeeByUsername(username, passWord);
     }
+
+    public List<Employee> getEmployeeByName(String name){
+        return EmployeeDAO.getInstance().getEmployeeByName(name);
+    }
 }

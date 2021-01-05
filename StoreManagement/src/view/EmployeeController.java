@@ -82,11 +82,12 @@ public class EmployeeController implements Initializable {
         setCell();
         loadData();
        // bindingData();
+        //TODO : fix search
 
-        /*txtSearch.textProperty().addListener((observableValue, s, t1) -> {
-            listEmployee.clear();
-            listEmployee.addAll(EmployeeService.getInstance().getEmployeeByID(t1));
-        });*/
+//        txtSearch.textProperty().addListener((observableValue, s, t1) -> {
+//            listEmployee.clear();
+//            listEmployee.addAll(EmployeeService.getInstance().getEmployeeByName(t1));
+//        });
     }
 
     private void setCell() {
@@ -209,5 +210,8 @@ public class EmployeeController implements Initializable {
             alert.showAndWait();
         }
 
+    }
+    public void btnRefreshCustomer_Click(ActionEvent event){
+        refreshTable();
     }
 }

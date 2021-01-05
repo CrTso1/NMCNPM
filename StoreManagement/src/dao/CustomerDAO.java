@@ -76,24 +76,28 @@ public class CustomerDAO {
 
 	public List<Customer> getCustomersByName(String name) {
 		List<Customer> listCustomers = new ArrayList<>();
+		boolean found = false;
 		try {
 
-			String sql = "SELECT * FROM Customer WHERE name like N'%"+name+"%' ";
+			String sql = "SELECT * FROM Customer WHERE name = ? ";
 			Connection connection = getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, name);
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
+				found = true;
 				Customer g = new Customer();
 				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
 				g.setPoint(resultSet.getInt("Points"));
-				g.setVIP(resultSet.getBoolean("VIP"));
+//				g.setVIP(resultSet.getBoolean("VIP"));
 				g.setAddress(resultSet.getString("address"));
 				listCustomers.add(g);
 			}
 
-			return listCustomers;
+			if(found) return listCustomers;
+			else return null;
 		} catch (SQLException ex) {
 			Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
 		}
