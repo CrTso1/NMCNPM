@@ -170,6 +170,7 @@ public class CustomerDAO {
 	}
 	public Customer getCustomersByPhone(String phone) {
 		Customer g = new Customer();
+		int found = 0;
 		try {
 
 			String sql = "SELECT * FROM Customer WHERE phone_number =? ";
@@ -178,6 +179,7 @@ public class CustomerDAO {
 			ps.setString(1, phone);
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
+				found = 1;
 				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
@@ -185,13 +187,12 @@ public class CustomerDAO {
 				g.setVIP(resultSet.getBoolean("VIP"));
 				g.setAddress(resultSet.getString("address"));
 			}
-
-			return g;
 		} catch (SQLException ex) {
 			Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
-		return null;
+		if(found == 1) return g;
+		else return null;
 	}
 
 	public void addCustomer(Customer g) {

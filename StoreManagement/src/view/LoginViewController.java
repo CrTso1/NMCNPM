@@ -133,7 +133,8 @@ public class LoginViewController implements Initializable {
 
     @FXML
     public void btnSignIn_Click(ActionEvent event) throws SQLException {
-        Account user = AccountService.getInstance().getUser(textUserLogin.getText(), passUserLogin.getText());
+//        Account user = AccountService.getInstance().getUser(textUserLogin.getText(), passUserLogin.getText());
+        Employee user = EmployeeService.getInstance().getEmployeeByUsername(textUserLogin.getText(), passUserLogin.getText());
         if(user!=null){
             String tilte = "Sign In";
             String message = textUserLogin.getText();

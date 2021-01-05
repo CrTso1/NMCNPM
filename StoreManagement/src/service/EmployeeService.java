@@ -54,4 +54,8 @@ public class EmployeeService {
     public  void changPassEmployee(Employee Employee, String newPass){
         EmployeeDAO.getInstance().updateEmployeePassword(Employee, newPass);
     }
+
+    public Employee getEmployeeByUsername(String username, String passWord){
+        return EmployeeDAO.getInstance().getEmployeeByUsername(username, passWord);
+    }
 }

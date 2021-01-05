@@ -1,5 +1,6 @@
 package src;
 import src.model.Account;
+import src.model.Employee;
 import src.view.*;
 import src.view.MainViewController;
 import javafx.application.Application;
@@ -27,12 +28,12 @@ public class Main extends Application {
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("view/MainView.fxml"));
+            loader.setLocation(getClass().getResource("view/LoginView.fxml"));
             rootLayout = loader.load();
 
-            MainViewController controller = loader.getController();
-            Account user = new Account("", "", 1, "", "");
-            controller.setMainStage(this.primaryStage, user);
+//            LoginViewController controller = loader.getController();
+//            Employee user = new Employee("", "", "", "", "", "", "", 0, "","");
+//            controller.setMainStage(this.primaryStage, user);
 
             Scene scene = new Scene(rootLayout);
             scene.setFill(Color.TRANSPARENT);

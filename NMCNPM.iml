@@ -11,5 +11,6 @@
     <orderEntry type="library" name="dependencies1" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="dependencies" level="project" />
+    <orderEntry type="library" exported="" name="lib2" level="project" />
   </component>
 </module>

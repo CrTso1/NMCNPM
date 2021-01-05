@@ -358,4 +358,33 @@ public class EmployeeDAO {
         }
 
     }
+    public Employee getEmployeeByUsername(String username, String passWord) {
+
+        try {
+
+            String sql = "SELECT * FROM Employee WHERE EmployeeName =? and passWord = ?";
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, passWord);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Employee u = new Employee();
+                u.setID(resultSet.getString("ID"));
+                u.setName(resultSet.getString("name"));
+                u.setRole(resultSet.getString("Role"));
+                u.setDoB(resultSet.getString("DOB"));
+                u.setAddress(resultSet.getString("address"));
+                u.setPhone(resultSet.getString("phone_number"));
+                u.setSalary(resultSet.getInt("Salary"));
+                u.setEmployeeName(resultSet.getString("EmployeeName"));
+                u.setPassWord(resultSet.getString("Password"));
+                return u;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
 }

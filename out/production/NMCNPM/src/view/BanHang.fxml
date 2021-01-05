@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.BanHangController">
+   <children>
+      <TextField id="searchProductText" fx:id="searchProduct" layoutX="20.0" layoutY="90.0" prefHeight="31.0" prefWidth="165.0" />
+      <Button id="searchProductButton" fx:id="searchProductButt" layoutX="200.0" layoutY="90.0" mnemonicParsing="false" text="Tìm kiếm" />
+      <TableView fx:id="productList" layoutX="20.0" layoutY="184.0" prefHeight="409.0" prefWidth="240.0">
+        <columns>
+          <TableColumn id="SearchProductTable" fx:id="idProductColumn" prefWidth="81.0" text="Mã " />
+          <TableColumn fx:id="nameProdColumn" prefWidth="83.0" text="Tên" />
+            <TableColumn fx:id="priceListCol" prefWidth="75.0" text="Giá" />
+        </columns>
+      </TableView>
+      <Label layoutX="20.0" layoutY="138.0" prefHeight="21.0" prefWidth="165.0" />
+      <Label layoutX="20.0" layoutY="52.0" text="Tìm kiếm sản phẩm:" />
+      <HBox layoutX="671.0" layoutY="90.0" prefHeight="31.0" prefWidth="116.0">
+         <children>
+            <TextField id="NumberField" fx:id="quantityText" prefHeight="31.0" prefWidth="44.0" />
+            <Button id="increaseButt" fx:id="increButt" mnemonicParsing="false" onAction="#increase" prefHeight="31.0" prefWidth="38.0" text="+" />
+            <Button id="decreaseButt" fx:id="decrButt" mnemonicParsing="false" onAction="#decrease" prefHeight="31.0" prefWidth="38.0" text="-" />
+         </children>
+      </HBox>
+      <TextField id="SearchedProductName" fx:id="productNameText" layoutX="433.0" layoutY="90.0" prefHeight="31.0" prefWidth="141.0" />
+      <TableView fx:id="billList" layoutX="297.0" layoutY="184.0" prefHeight="360.0" prefWidth="383.0">
+        <columns>
+          <TableColumn id="billTable" fx:id="bilNameCol" prefWidth="286.0" text="Tên" />
+          <TableColumn fx:id="quantityCol" minWidth="0.0" prefWidth="96.0" text="Số lượng" />
+        </columns>
+      </TableView>
+      <Button id="deleteButton" fx:id="deleteButt" layoutX="297.0" layoutY="561.0" mnemonicParsing="false" onAction="#deleteItem" text="Xóa" />
+      <Label layoutX="504.0" layoutY="603.0" text="Tổng tiền:" />
+      <TextField id="totalField" fx:id="totalText" layoutX="586.0" layoutY="598.0" prefHeight="31.0" prefWidth="94.0" />
+      <Text layoutX="504.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giảm giá:" />
+      <TextField id="discountField" fx:id="discountText" layoutX="587.0" layoutY="561.0" prefHeight="31.0" prefWidth="94.0" />
+      <Label layoutX="320.0" layoutY="95.0" text="Tên sản phẩm:" />
+      <Label layoutX="603.0" layoutY="95.0" text="Số lượng:" />
+      <VBox layoutX="690.0" layoutY="184.0" prefHeight="137.0" prefWidth="165.0">
+         <children>
+            <Label text="Số điện thoại:" />
+            <TextField id="inputPhoneText" fx:id="phoneText" />
+            <Button id="inputPhoneButt" fx:id="findCusButt" mnemonicParsing="false" onAction="#findCusButt_Click" text="Tìm kiếm" />
+            <Label text="Tên khách:" />
+            <TextField id="customerName" fx:id="cusNameText" />
+         </children>
+      </VBox>
+      <HBox layoutX="690.0" layoutY="332.0" prefHeight="31.0" prefWidth="165.0">
+         <children>
+            <Label prefHeight="32.0" prefWidth="39.0" text="Điểm:" />
+            <TextField id="pointField" fx:id="pointText" prefHeight="20.0" prefWidth="46.0" />
+         </children>
+      </HBox>
+      <Button id="thanhToanButt" fx:id="thanhToanButt" layoutX="737.0" layoutY="560.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="100.0" text="Thanh toán" />
+      <Label layoutX="20.0" layoutY="149.0" text="Danh sách sản phẩm:" />
+      <Label layoutX="297.0" layoutY="149.0" text="Hóa đơn:" />
+      <Button id="themButton" fx:id="addButt" layoutX="791.0" layoutY="90.0" mnemonicParsing="false" onAction="#addProducttoBill" prefHeight="31.0" prefWidth="61.0" text="Thêm" />
+      <Button fx:id="selectProdButton" layoutX="108.0" layoutY="598.0" mnemonicParsing="false" onAction="#selectProduct" text="Chọn" />
+   </children>
+</AnchorPane>

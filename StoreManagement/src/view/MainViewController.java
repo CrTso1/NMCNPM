@@ -1,6 +1,7 @@
 package src.view;
 
 import src.model.Account;
+import src.model.Employee;
 import src.service.AccountService;
 import com.jfoenix.controls.JFXButton;
 //import com.lowagie.text.Anchor;
@@ -84,7 +85,7 @@ public class MainViewController implements Initializable {
     @FXML
     public FontAwesomeIcon iconMaximize;
 
-    Account User;
+    Employee User;
 
     String style = "-fx-background-color:  rgba(19,21,32, 0.8);\n" +
             "    -fx-background-radius:  25px 0px 0px 25px;\n" +
@@ -226,24 +227,22 @@ public class MainViewController implements Initializable {
         stage.setFullScreen(!stage.isFullScreen());
     }
 
-    public void setMainStage(Stage stage, Account user) {
+    public void setMainStage(Stage stage, Employee user) {
         this.stage = stage;
-        this.User = new Account(user.getUsername(), user.getPassword(), user.getIdper(), user.getName(), user.getEmail());
-        Account.currentUser = this.User;
+        this.User = new Employee(user.getID(), user.getName(), user.getDoB(), user.getAddress(), user.getPhone(), user.getRole(), user.getShift(), user.getSalary(),user.getEmployeeName(),user.getPassWord());
+//        Account.currentUser = this.User;
         lbNameAccount.setText(this.User.getName());
-        lbUsername.setText(this.User.getUsername());
-        if(user.getIdper()==1){
-            menuItemInfo.setVisible(true);
-            menuItemDMK.setVisible(false);
-            //Quản trị viên
+        lbUsername.setText(this.User.getEmployeeName());
+        System.out.println(user.getRole());
+        if(user.getRole().equals("quản lý")){
+//            menuItemInfo.setVisible(true);
+//            menuItemDMK.setVisible(false);
+            //nhan vien
+//            btnQLNV.setDisable(true);
 
 
         }else{
-            if(user.getIdper() == 2) {
-                //Nhân viên
-                btnQLNV.setDisable(true);
-
-            }
+            btnQLNV.setDisable(true);
             menuItemInfo.setVisible(false);
             menuItemDMK.setVisible(true);
         }
