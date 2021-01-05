@@ -45,8 +45,6 @@ public class EditEmployeeController implements Initializable {
     @FXML
     public TextField txtEmployeeName;
     @FXML
-    public TextField txtEmployeeBonus;
-    @FXML
     public TextField txtEmployeeSalary;
     @FXML
     public TextField txtEmployeeShift;
@@ -54,6 +52,8 @@ public class EditEmployeeController implements Initializable {
     public TextField txtEmployeeUsername;
     @FXML
     public TextField txtEmployeePassword;
+    @FXML
+    public TextField txtEmployeeRole;
     // Controls
     @FXML
     public Button btnLuu;
@@ -92,13 +92,13 @@ public class EditEmployeeController implements Initializable {
         bindingData();
     }
     private void bindingData() {
-        // txtCustomerId.setText();
         txtEmployeeId.setText(employee.getID());
         txtEmployeeName.setText(employee.getName());
-        txtEmployeeBonus.setText(""+employee.getBonus());
+     //   txtEmployeeBonus.setText(""+employee.getBonus());
         txtEmployeePassword.setText(employee.getPassWord());
         txtEmployeeSalary.setText(""+employee.getSalary());
         txtEmployeeShift.setText(employee.getShift());
+        txtEmployeeRole.setText(employee.getRole());
         txtEmployeeUsername.setText(employee.getEmployeeName());
 
     }
@@ -124,8 +124,7 @@ public class EditEmployeeController implements Initializable {
 
     public void btnLuu_Click(ActionEvent event) throws FileNotFoundException {
         //VALIDATE
-        if(txtEmployeeName.getText().trim().equals("") ||
-                txtEmployeeBonus.getText().trim().equals("") ||
+        /*if(txtEmployeeName.getText().trim().equals("") ||
                 txtEmployeeSalary.getText().toString().trim().equals("") ||
                 txtEmployeeShift.getText().trim().equals("") ||
                 txtEmployeeUsername.getText().trim().equals("")
@@ -135,7 +134,7 @@ public class EditEmployeeController implements Initializable {
             alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
             alert.showAndWait();
             return;
-        }
+        }*/
         //
         String employeeId = txtEmployeeId.getText();
         String employeeName = txtEmployeeName.getText();
@@ -143,15 +142,15 @@ public class EditEmployeeController implements Initializable {
         String employeeShift = txtEmployeeShift.getText();
         String employeeUsername = txtEmployeeUsername.getText();
         String employeePassword = txtEmployeePassword.getText();
+        String employeeRole = txtEmployeeRole.getText();
 
-        Employee employee = new Employee(employeeId, employeeName,"", "", "phone", "employee",employeeShift, Long.parseLong(employeeSalary), employeeUsername, "pass");
+        Employee employee = new Employee(employeeId, employeeName,"1-1-2000", "Hà Nội", "91273097", employeeRole ,employeeShift, Long.parseLong(employeeSalary), employeeUsername, employeePassword);
 
         EmployeeService.getInstance().updateEmployee(employee);
         Util.showSuccess("Quản lý nhân viên", "Sửa nhân viên thành công!");
         employeeController.refreshTable();
         txtEmployeeId.setText("");
         txtEmployeeName.setText("");
-        txtEmployeeBonus.setText("");
         txtEmployeeSalary.setText("");
         txtEmployeeShift.setText("");
         txtEmployeeUsername.setText("");

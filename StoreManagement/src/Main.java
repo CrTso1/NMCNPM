@@ -33,8 +33,7 @@ public class Main extends Application {
 
 //            LoginViewController controller = loader.getController();
 //            Employee user = new Employee("", "", "", "", "", "", "", 0, "","");
-//            controller.setMainStage(this.primaryStage, user);
-
+//            controller.setMainStage(this.primaryStage, user)
             Scene scene = new Scene(rootLayout);
             scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);

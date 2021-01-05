@@ -221,22 +221,22 @@ public class EmployeeDAO {
 //
 //    }
 
-    public void updateEmployee(Employee Employee) {
+    public void updateEmployee(Employee employee) {
         try {
             Connection connection = getConnection();
-            String sql = "UPDATE Employee SET Address = ?, phone_number =?, Role = ?, Shift = ?, Salary = ?, "
+            String sql = "UPDATE employee SET Address = ?, phone_number =?, Role = ?, Shift = ?, Salary = ?, "
                     + "EmployeeName=?,Password=? , name =? WHERE ID =?";
-
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, Employee.getID());
-            ps.setString(2, Employee.getAddress());
-            ps.setString(3, Employee.getPhone());
-            ps.setString(4, Employee.getRole());
-            ps.setString(6, Employee.getShift());
-            ps.setLong(5, Employee.getSalary());
-            ps.setString(7, Employee.getEmployeeName());
-            ps.setString(8, Employee.getPassWord());
-            ps.setString(9, Employee.getName());
+            String sql2 = "update employee set name=?, Shift = ?, Salary = ?, Role = ?, EmployeeName = ?, Password = ? where ID=?";
+            //UPDATE `supermarket`.`employee` SET `EmployeeName` = 'Tuan2000' WHERE (`ID` = 'IDEmp128');
+            //UPDATE `supermarket`.`employee` SET `name` = 'Đình Tuấn', `DOB` = '2000-6-24', `phone_number` = '329413043', `Shift` = 'đêm', `Salary` = '99999999' WHERE (`ID` = 'NV120932');
+            PreparedStatement ps = connection.prepareStatement(sql2);
+            ps.setString(1, employee.getName());
+            ps.setString(2, employee.getShift());
+            ps.setString(3, ""+employee.getSalary());
+            ps.setString(4, employee.getRole());
+            ps.setString(5, employee.getEmployeeName());
+            ps.setString(6, employee.getPassWord());
+            ps.setString(7, employee.getID());
             int rs = ps.executeUpdate();
 //            String sql0 = "DELETE FROM SalaryEmployee WHERE IDEmployee = ? ";
 //
