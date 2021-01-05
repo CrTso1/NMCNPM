@@ -128,14 +128,14 @@ public class ProductDao {
         try {
             Connection connection = getConnection();
 
-            String sql = "INSERT INTO Product (id,name,price)"
-                    + " VALUES (?,?,?)";
+            String sql = "INSERT INTO Product (id,name,price, quantity, product_detail)"
+                    + " VALUES (?,?,?, ?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, d.getProductId());
             ps.setString(2, d.getProductName());
             ps.setInt(3, d.getProductPrice());
-            ps.setInt(3, d.getProductQuantity());
-            ps.setString(3, d.getProductDetail());
+            ps.setInt(4, d.getProductQuantity());
+            ps.setString(5, d.getProductDetail());
 
             int rs = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -149,11 +149,11 @@ public class ProductDao {
                     +" WHERE id =?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(4, d.getProductId());
+            ps.setString(5, d.getProductId());
             ps.setString(1, d.getProductName());
             ps.setInt(2, d.getProductPrice());
             ps.setInt(3, d.getProductQuantity());
-            ps.setString(3, d.getProductDetail());
+            ps.setString(4, d.getProductDetail());
 
             int rs = ps.executeUpdate();
 

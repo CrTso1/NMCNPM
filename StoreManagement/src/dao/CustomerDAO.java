@@ -199,19 +199,17 @@ public class CustomerDAO {
 		try {
 			Connection connection = getConnection();
 
-			String sql = "INSERT INTO Customer (IDCustomer, name, phone_number, Points, address, VIP, DoB)"
-					+ " VALUES (?,?,?,?,?,?)";
+			String sql = "INSERT INTO customer (IDCustomer, name, address, phone_number, DoB, Points) VALUES (?,?,?,?,?,?)";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, g.getID());
 			ps.setString(2, g.getName());
-			ps.setString(3, g.getPhone());
-			ps.setInt(4, g.getPoint());
-			ps.setString(5, g.getAddress());
-			ps.setBoolean(6, g.isVIP());
+			ps.setString(3, g.getAddress());
+			ps.setString(4, g.getPhone());
 			ps.setString(5, g.getDoB());
+			ps.setInt(6, g.getPoint());
 			int rs = ps.executeUpdate();
 		} catch (SQLException ex) {
-			Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
 		}
 
 	}

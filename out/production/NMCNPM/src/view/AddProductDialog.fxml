@@ -39,7 +39,7 @@
             </children></Pane>
           <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="164.0" prefHeight="63.0" prefWidth="315.0">
               <children>
-                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="107.0" text="Đơn vị">
+                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="107.0" text="Số lượng: ">
                       <padding>
                           <Insets left="10.0" />
                       </padding>
@@ -47,7 +47,7 @@
                           <Font name="Verdana" size="13.0" />
                       </font>
                   </Label>
-                  <TextField fx:id="txtProductUnit" prefHeight="27.0" prefWidth="198.0">
+                  <TextField fx:id="txtProductQuantity" prefHeight="27.0" prefWidth="198.0">
                       <font>
                           <Font name="Verdana" size="13.0" />
                       </font>

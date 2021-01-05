@@ -51,6 +51,12 @@ public class EditEmployeeController implements Initializable {
     @FXML
     public TextField txtEmployeeShift;
     @FXML
+    public TextField txtEmployeeAddress;
+    @FXML
+    public TextField txtEmployeeRole;
+    @FXML
+    public TextField txtEmployeePhone;
+    @FXML
     public TextField txtEmployeeUsername;
     @FXML
     public TextField txtEmployeePassword;
@@ -95,11 +101,10 @@ public class EditEmployeeController implements Initializable {
         // txtCustomerId.setText();
         txtEmployeeId.setText(employee.getID());
         txtEmployeeName.setText(employee.getName());
-        txtEmployeeBonus.setText(""+employee.getBonus());
-        txtEmployeePassword.setText(employee.getPassWord());
         txtEmployeeSalary.setText(""+employee.getSalary());
         txtEmployeeShift.setText(employee.getShift());
-        txtEmployeeUsername.setText(employee.getEmployeeName());
+        txtEmployeePhone.setText(employee.getPhone());
+        txtEmployeeAddress.setText(employee.getAddress());
 
     }
 
@@ -125,10 +130,8 @@ public class EditEmployeeController implements Initializable {
     public void btnLuu_Click(ActionEvent event) throws FileNotFoundException {
         //VALIDATE
         if(txtEmployeeName.getText().trim().equals("") ||
-                txtEmployeeBonus.getText().trim().equals("") ||
                 txtEmployeeSalary.getText().toString().trim().equals("") ||
-                txtEmployeeShift.getText().trim().equals("") ||
-                txtEmployeeUsername.getText().trim().equals("")
+                txtEmployeeShift.getText().trim().equals("")
         ) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -141,21 +144,23 @@ public class EditEmployeeController implements Initializable {
         String employeeName = txtEmployeeName.getText();
         String employeeSalary = txtEmployeeSalary.getText();
         String employeeShift = txtEmployeeShift.getText();
-        String employeeUsername = txtEmployeeUsername.getText();
-        String employeePassword = txtEmployeePassword.getText();
+        String employeeAdd = txtEmployeeAddress.getText();
+        String employeePhone = txtEmployeePhone.getText();
+//        String employeeUsername = txtEmployeeUsername.getText();
+//        String employeePassword = txtEmployeePassword.getText();
 
-        Employee employee = new Employee(employeeId, employeeName,"", "", "phone", "employee",employeeShift, Long.parseLong(employeeSalary), employeeUsername, "pass");
 
-        EmployeeService.getInstance().updateEmployee(employee);
+        Employee newemployee = new Employee(employeeId, employeeName,"", employeeAdd, employeePhone, "employee",employeeShift, Long.parseLong(employeeSalary), employee.getEmployeeName(), employee.getPassWord());
+
+        EmployeeService.getInstance().updateEmployee(newemployee);
         Util.showSuccess("Quản lý nhân viên", "Sửa nhân viên thành công!");
         employeeController.refreshTable();
         txtEmployeeId.setText("");
         txtEmployeeName.setText("");
-        txtEmployeeBonus.setText("");
         txtEmployeeSalary.setText("");
         txtEmployeeShift.setText("");
-        txtEmployeeUsername.setText("");
-        txtEmployeePassword.setText("");
+        txtEmployeeAddress.setText("");
+        txtEmployeePhone.setText("");
 
         Stage stage = (Stage) btnHuy.getScene().getWindow();
         stage.close();

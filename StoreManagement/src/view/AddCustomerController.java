@@ -51,6 +51,10 @@ public class AddCustomerController implements Initializable {
     @FXML
     public TextField txtCustomerIsVip;
     @FXML
+    public TextField txtCustomerDoB;
+    @FXML
+    public TextField txtCustomerAddress;
+    @FXML
     public Button btnThem;
     @FXML
     public Button btnHuy;
@@ -106,7 +110,6 @@ public class AddCustomerController implements Initializable {
     public void btnThem_Click(ActionEvent event) throws FileNotFoundException {
         //VALIDATE
         if(txtCustomerName.getText().trim().equals("") ||
-                txtCustomerIsVip.getText().trim().equals("") ||
                 txtCustomerPoint.getText().toString().trim().equals("") ||
                 txtCustomerPhone.getText().trim().equals("")
         ) {
@@ -119,18 +122,20 @@ public class AddCustomerController implements Initializable {
         if (true) {
             String customerId = txtCustomerId.getText();
             String customerName = txtCustomerName.getText();
-            String customerIsVip = txtCustomerIsVip.getText();
+            String customerDoB = txtCustomerDoB.getText();
             String customerPhone = txtCustomerPhone.getText();
             String customerPoint = txtCustomerPoint.getText();
-            Customer customer = new Customer(customerId, customerName,"","", customerPhone,  true, Integer.parseInt(customerPoint));
-
+            String customerAddress = txtCustomerAddress.getText();
+            Customer customer = new Customer(customerId, customerName,customerDoB,customerAddress, customerPhone,  true, Integer.parseInt(customerPoint));
+            System.out.println(customer.getName());
             CustomerService.getInstance().addCustomer(customer);
             customerController.refreshTable();
             txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.KH));
-            txtCustomerIsVip.setText("");
             txtCustomerName.setText("");
             txtCustomerPhone.setText("");
             txtCustomerPoint.setText("");
+            txtCustomerAddress.setText("");
+            txtCustomerDoB.setText("");
 
 
             Util.showSuccess("Quản lý khách hàng", "Thêm khách hàng thành công!");

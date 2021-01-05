@@ -40,7 +40,7 @@ public class AddProductController implements Initializable {
     @FXML
     public TextField txtProductName;
     @FXML
-    public TextField txtProductUnit;
+    public TextField txtProductQuantity;
     @FXML
     public TextField txtProductDetail;
     @FXML
@@ -106,7 +106,9 @@ public class AddProductController implements Initializable {
         if(txtProductId.getText().trim().equals("") ||
                 txtProductName.getText().trim().equals("") ||
                 txtProductPrice.getText().toString().trim().equals("") ||
-                txtProductDetail.getText().trim().equals("")
+                txtProductDetail.getText().trim().equals("")||
+                txtProductQuantity.getText().trim().equals("")
+
         ) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -118,7 +120,7 @@ public class AddProductController implements Initializable {
             String productId = txtProductId.getText();
             String productName = txtProductName.getText();
             String productDetail = txtProductDetail.getText();
-            int unit = Integer.parseInt(txtProductUnit.getText());
+            int unit = Integer.parseInt(txtProductQuantity.getText());
             int price = Integer.parseInt(txtProductPrice.getText());
 
             Product product = new Product(productId, productName, unit, productDetail, price);
@@ -130,7 +132,7 @@ public class AddProductController implements Initializable {
             txtProductId.setText("");
             txtProductName.setText("");
             txtProductPrice.setText("");
-            txtProductUnit.setText("");
+            txtProductQuantity.setText("");
 
             Util.showSuccess("Quản lý sản phẩm", "Thêm sản phẩm thành công!");
         } else {

@@ -153,11 +153,6 @@ public class EmployeeDAO {
             ps1.setString(1, IDEmployee);
             int rs1 = ps1.executeUpdate();
 
-            String sql = "DELETE FROM Employee WHERE ID = ? ";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, IDEmployee);
-            int rs = ps.executeUpdate();
-
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -224,19 +219,17 @@ public class EmployeeDAO {
     public void updateEmployee(Employee Employee) {
         try {
             Connection connection = getConnection();
-            String sql = "UPDATE Employee SET Address = ?, phone_number =?, Role = ?, Shift = ?, Salary = ?, "
-                    + "EmployeeName=?,Password=? , name =? WHERE ID =?";
+            String sql = "UPDATE employee SET address = ? phone_number =?, Role = ?, Shift = ?, Salary = ? "
+                    + ", name =? WHERE ID =?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, Employee.getID());
-            ps.setString(2, Employee.getAddress());
-            ps.setString(3, Employee.getPhone());
-            ps.setString(4, Employee.getRole());
-            ps.setString(6, Employee.getShift());
+            ps.setString(1, Employee.getAddress());
+            ps.setString(2, Employee.getPhone());
+            ps.setString(3, Employee.getRole());
+            ps.setString(4, Employee.getShift());
             ps.setLong(5, Employee.getSalary());
-            ps.setString(7, Employee.getEmployeeName());
-            ps.setString(8, Employee.getPassWord());
-            ps.setString(9, Employee.getName());
+            ps.setString(6, Employee.getName());
+            ps.setString(7, Employee.getID());
             int rs = ps.executeUpdate();
 //            String sql0 = "DELETE FROM SalaryEmployee WHERE IDEmployee = ? ";
 //

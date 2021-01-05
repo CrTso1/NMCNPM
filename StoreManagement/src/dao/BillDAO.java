@@ -57,7 +57,7 @@ public class BillDAO {
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 Bill b = new Bill();
-                b.setIDOrder(resultSet.getInt("IDOrder"));
+                b.setIDOrder(resultSet.getString("IDOrder"));
                 b.setDate(resultSet.getString("Ngay"));
                 b.setTotal(resultSet.getInt("Total_price"));
                 listBill.add(b);
@@ -83,7 +83,7 @@ public class BillDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                b.setIDOrder(rs.getInt("IDOrder"));
+                b.setIDOrder(rs.getString("IDOrder"));
                 b.setDate(rs.getString("Ngay"));
                 b.setTotal(rs.getInt("Total_price"));
 
@@ -103,9 +103,9 @@ public class BillDAO {
             String sql = "INSERT INTO Bill (IDOrder, DoanhThu, Ngay)"
                     + " VALUES (?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, b.getIDOrder());
-            ps.setString(2, b.getDate());
-            ps.setInt(3, b.getTotal());
+            ps.setString(1, b.getIDOrder());
+            ps.setInt(2, b.getTotal());
+            ps.setString(3, b.getDate());
 
             int rs = ps.executeUpdate();
             System.out.println(rs);
@@ -165,7 +165,7 @@ public class BillDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Bill b = new Bill();
-                b.setIDOrder(rs.getInt("IDOrder"));
+                b.setIDOrder(rs.getString("IDOrder"));
                 b.setDate(rs.getString("Ngay"));
                 b.setTotal(rs.getInt("Total_price"));
                 listBill.add(b);

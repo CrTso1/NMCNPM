@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.EditEmployeeController">
+<AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.EditEmployeeController">
     <children>
         <Pane fx:id="panelEditEmployee" layoutY="-1.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
             <children>
@@ -74,9 +65,9 @@
                      </font></TextField>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1">
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="1">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="Tên nhân viên:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="Tên :">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -89,22 +80,7 @@
                      </font></TextField>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="1">
-                    <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Thưởng:">
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
-                     <font>
-                        <Font name="Verdana" size="13.0" />
-                     </font></Label>
-                        <TextField fx:id="txtEmployeeBonus" prefWidth="190.0">
-                     <font>
-                        <Font name="Verdana" size="13.0" />
-                     </font></TextField>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1">
                     <children>
                         <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="Lương: ">
                             <padding>
@@ -137,7 +113,7 @@
                 </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.rowIndex="3">
                <children>
-                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản:">
+                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Phone">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -145,28 +121,13 @@
                         <Font name="Verdana" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtEmployeeUsername" prefHeight="27.0" prefWidth="190.0">
+                  <TextField fx:id="txtEmployeePhone" prefHeight="27.0" prefWidth="190.0">
                      <font>
                         <Font name="Verdana" size="13.0" />
                      </font></TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <children>
-                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="Mật khẩu:">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="Verdana" size="13.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="txtEmployeePassword" prefWidth="190.0">
-                     <font>
-                        <Font name="Verdana" size="13.0" />
-                     </font></PasswordField>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.rowIndex="4">
                <children>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Chức vụ:">
@@ -177,9 +138,28 @@
                         <Font name="Verdana" size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbLoai" prefHeight="25.0" prefWidth="190.0" />
+                   <TextField fx:id="txtEmployeeRole" editable="false" prefHeight="27.0" prefWidth="190.0">
+                       <font>
+                           <Font name="Verdana" size="13.0" />
+                       </font></TextField>
                </children>
             </HBox>
+             <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                 <children>
+                     <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Địa chỉ:">
+                         <padding>
+                             <Insets left="10.0" />
+                         </padding>
+                         <font>
+                             <Font name="Verdana" size="13.0" />
+                         </font>
+                     </Label>
+                     <TextField fx:id="txtEmployeeAddress" editable="false" prefHeight="27.0" prefWidth="190.0">
+                         <font>
+                             <Font name="Verdana" size="13.0" />
+                         </font></TextField>
+                 </children>
+             </HBox>
          </children>
       </GridPane>
     </children>

@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -24,10 +26,15 @@ import java.util.Map;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+
 import src.model.Product;
 import src.service.ProductService;
 import src.service.CustomerService;
 import src.model.Customer;
+import src.model.Bill;
+import src.service.BillService;
+import src.utils.Util;
 
 public class BanHangController implements Initializable{
     @FXML
@@ -105,7 +112,7 @@ public class BanHangController implements Initializable{
 
     private Customer customer;
 
-
+    private boolean isNewCus = true;
     private int totalPrice = 0;
     private int currentPrice = 0;
     private float currentDiscount;
@@ -240,11 +247,23 @@ public class BanHangController implements Initializable{
                 e.printStackTrace();
             }
         } else  {
+            isNewCus = false;
             System.out.println("cus k null");
             customer = cus;
             cusNameText.setText(cus.getName());
             pointText.setText("" + cus.getPoint());
         }
+    }
+
+    public void thanhToan (ActionEvent event){
+        if(isNewCus) CustomerService.getInstance().addCustomer(customer);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+
+        Bill newBill = new Bill(Util.generateID(Util.PREFIX_CODE.BILL), totalPrice, formatter.format(date));
+        BillService.getInstance().addBill(newBill);
+
+        ;
     }
 
 }

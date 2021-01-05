@@ -24,7 +24,8 @@ public class Util {
     public enum PREFIX_CODE {
         SP, // sản phẩm
         NV, // nhân viên
-        KH // khách hàng
+        KH, // khách hàng
+        BILL
     };
 
     public static String dateFormat(Date date){

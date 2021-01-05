@@ -2,7 +2,8 @@ package src.model;
 import java.util.ArrayList;
 
 public class Bill {
-    private int IDOrder, total;
+    private String IDOrder;
+    private int total;
 
     private String date;
 
@@ -14,15 +15,14 @@ public class Bill {
 
     }
 
-    public Bill(int IDOrder, int total, String date, ArrayList<Product> listOrderProduct, Customer customer){
+    public Bill(String IDOrder, int total, String date){
         this.IDOrder = IDOrder;
         this.total = total;
         this.date = date;
-        this.listOrderProduct = listOrderProduct;
-        this.customer = customer;
+//        this.customer = customer;
     }
 
-    public int getIDOrder() {
+    public String getIDOrder() {
         return IDOrder;
     }
 
@@ -34,7 +34,7 @@ public class Bill {
         return date;
     }
 
-    public void setIDOrder(int IDOrder) {
+    public void setIDOrder(String IDOrder) {
         this.IDOrder = IDOrder;
     }
 
@@ -46,20 +46,20 @@ public class Bill {
         this.date = date;
     }
 
-    public ArrayList<Product> getListOrderProduct() {
-        return listOrderProduct;
-    }
-
-    public void setListOrderProduct(ArrayList<Product> listOrderProduct) {
-        this.listOrderProduct = listOrderProduct;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+//    public ArrayList<Product> getListOrderProduct() {
+//        return listOrderProduct;
+//    }
+//
+//    public void setListOrderProduct(ArrayList<Product> listOrderProduct) {
+//        this.listOrderProduct = listOrderProduct;
+//    }
+//
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 }
 
