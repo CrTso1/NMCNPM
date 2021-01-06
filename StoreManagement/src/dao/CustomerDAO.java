@@ -127,15 +127,15 @@ public class CustomerDAO {
 	public void updateCustomer(Customer g) {
 		try {
 			Connection connection = getConnection();
-			String sql = "UPDATE Customer SET name =? ,phone_number =?, Points=?, address = ?"
+			String sql = "UPDATE customer SET name =? ,phone_number =?, Points=?, address = ?"
 					+" WHERE IDCustomer =?";
-
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(5, g.getID());
+			String sql2 = "update customer set name=?, phone_number = ?, Points = ?, address = ? where IDCustomer=?";
+			PreparedStatement ps = connection.prepareStatement(sql2);
 			ps.setString(1, g.getName());
 			ps.setString(2, g.getPhone());
-			ps.setInt(3, g.getPoint());
+			ps.setString(3, ""+g.getPoint());
 			ps.setString(4, g.getAddress());
+			ps.setString(5, g.getID());
 
 			int rs = ps.executeUpdate();
 

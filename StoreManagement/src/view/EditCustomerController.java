@@ -50,6 +50,8 @@ public class EditCustomerController implements Initializable {
     @FXML
     public TextField txtCustomerIsVip;
     @FXML
+    public TextField txtCustomerAddress;
+    @FXML
     public Button btnLuu;
     @FXML
     public Button btnHuy;
@@ -88,9 +90,8 @@ public class EditCustomerController implements Initializable {
         bindingData();
     }
     private void bindingData() {
-        // txtCustomerId.setText();
-
-
+        txtCustomerId.setText(customer.getID());
+        txtCustomerAddress.setText(customer.getAddress());
         txtCustomerName.setText(customer.getName());
         txtCustomerPoint.setText("" + customer.getPoint());
         txtCustomerPhone.setText(customer.getPhone());
@@ -133,13 +134,13 @@ public class EditCustomerController implements Initializable {
 
         String customerId = txtCustomerId.getText();
         String customerName = txtCustomerName.getText();
-
+        String customerAddress = txtCustomerAddress.getText();
         String customerPoint = txtCustomerPoint.getText();
         String customerPhone = txtCustomerPhone.getText();
 
-        Customer newCustomer = new Customer(customerId, customerName,customer.getDoB(),"", customerPhone,  true, Integer.parseInt(customerPoint));
+        Customer newCustomer = new Customer(customerId, customerName,customer.getDoB(),customerAddress, customerPhone,  true, Integer.parseInt(customerPoint));
 
-        CustomerService.getInstance().updateGoods(customer);
+        CustomerService.getInstance().updateGoods(newCustomer);
         Util.showSuccess("Quản lý khách hàng", "Sửa khách hàng thành công!");
         customerController.refreshTable();
         txtCustomerId.setText("");
