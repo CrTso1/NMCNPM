@@ -11,7 +11,7 @@
     <children>
         <Pane fx:id="panelEditCustomer" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="267.0" layoutY="1.0" text="SỨA KHÁCH HÀNG" textFill="WHITE">
+                <Label layoutX="267.0" layoutY="1.0" text="SỬA KHÁCH HÀNG" textFill="WHITE">
                     <font>
                         <Font name="Verdana Bold" size="18.0" />
                     </font>
@@ -30,7 +30,7 @@
                 <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.rowIndex="1">
+                <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.columnIndex="1">
                     <children>
                         <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Mã khách hàng:">
                             <padding>
@@ -40,6 +40,36 @@
                                 <Font name="Verdana" size="13.0" />
                             </font></Label>
                         <TextField fx:id="txtCustomerId" prefHeight="27.0" prefWidth="190.0">
+                            <font>
+                                <Font name="Verdana" size="13.0" />
+                            </font></TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.rowIndex="2">
+                    <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Địa chỉ:">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                            <font>
+                                <Font name="Verdana" size="13.0" />
+                            </font></Label>
+                        <TextField fx:id="txtCustomerAddress" prefHeight="27.0" prefWidth="190.0">
+                            <font>
+                                <Font name="Verdana" size="13.0" />
+                            </font></TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Ngày sinh:">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                            <font>
+                                <Font name="Verdana" size="13.0" />
+                            </font></Label>
+                        <TextField fx:id="txtCustomerDoB" prefHeight="27.0" prefWidth="190.0">
                             <font>
                                 <Font name="Verdana" size="13.0" />
                             </font></TextField>
@@ -62,17 +92,25 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="297.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Vip:">
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
-                            <font>
-                                <Font name="Verdana" size="13.0" />
-                            </font></Label>
-                  <TextField fx:id="txtCustomerIsVip" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
+                            <children>
+                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="SDT:">
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                    <font>
+                                        <Font name="Verdana" size="13.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="txtCustomerPhone" prefWidth="190.0">
+                                    <font>
+                                        <Font name="Verdana" size="13.0" />
+                                    </font>
+                                </TextField>
+                            </children>
+                        </HBox>
+                    </children></HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="1">
                     <children>
                         <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Điểm:">
                             <padding>
@@ -87,30 +125,8 @@
                             </font></TextField>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                    <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="SDT:">
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
-                            <font>
-                                <Font name="Verdana" size="13.0" />
-                            </font></Label>
-                        <TextField fx:id="txtCustomerPhone" prefWidth="190.0">
-                            <font>
-                                <Font name="Verdana" size="13.0" />
-                            </font></TextField>
-                    </children>
-                </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="3">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Account:">
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
-                            <font>
-                                <Font name="Verdana" size="13.0" />
-                            </font></Label>
                         <Pane prefHeight="50.0" prefWidth="13.0" />
                     </children>
                 </HBox>
@@ -118,7 +134,7 @@
         </GridPane>
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton fx:id="btnLuu" layoutX="239.0" layoutY="6.0" onAction="#btnLuu_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="LƯU">
+                <JFXButton fx:id="btnThem" layoutX="239.0" layoutY="6.0" onAction="#btnLuu_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="LƯU">
                     <font>
                         <Font name="Verdana" size="13.0" />
                     </font></JFXButton>
