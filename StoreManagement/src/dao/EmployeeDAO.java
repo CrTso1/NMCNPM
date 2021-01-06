@@ -222,15 +222,15 @@ public class EmployeeDAO {
             Connection connection = getConnection();
             String sql = "UPDATE employee SET address = ? phone_number =?, Role = ?, Shift = ?, Salary = ? "
                     + ", name =? WHERE ID =?";
+            String sql2 = "update employee set address=?, phone_number = ?, Salary = ?, Shift = ?, name = ? where ID=?";
 
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql2);
             ps.setString(1, Employee.getAddress());
             ps.setString(2, Employee.getPhone());
-            ps.setString(3, Employee.getRole());
+            ps.setString(3, ""+Employee.getSalary());
             ps.setString(4, Employee.getShift());
-            ps.setString(5,""+ Employee.getSalary());
-            ps.setString(6, Employee.getName());
-            ps.setString(7, Employee.getID());
+            ps.setString(5, Employee.getName());
+            ps.setString(6, Employee.getID());
             int rs = ps.executeUpdate();
 //            String sql0 = "DELETE FROM SalaryEmployee WHERE IDEmployee = ? ";
 //
