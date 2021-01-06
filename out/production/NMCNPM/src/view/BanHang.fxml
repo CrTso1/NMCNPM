@@ -63,7 +63,7 @@
             <TextField id="pointField" fx:id="pointText" prefHeight="20.0" prefWidth="46.0" />
          </children>
       </HBox>
-      <Button id="thanhToanButt" fx:id="thanhToanButt" layoutX="737.0" layoutY="560.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="100.0" text="Thanh toán" />
+      <Button id="thanhToanButt" fx:id="thanhToanButt" layoutX="737.0" layoutY="560.0" mnemonicParsing="false" onAction="#thanhToan" prefHeight="66.0" prefWidth="100.0" text="Thanh toán" />
       <Label layoutX="20.0" layoutY="149.0" text="Danh sách sản phẩm:" />
       <Label layoutX="297.0" layoutY="149.0" text="Hóa đơn:" />
       <Button id="themButton" fx:id="addButt" layoutX="791.0" layoutY="90.0" mnemonicParsing="false" onAction="#addProducttoBill" prefHeight="31.0" prefWidth="61.0" text="Thêm" />

@@ -25,7 +25,7 @@ public class Util {
         SP, // sản phẩm
         NV, // nhân viên
         KH, // khách hàng
-        BILL
+        BI
     };
 
     public static String dateFormat(Date date){

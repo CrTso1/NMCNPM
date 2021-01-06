@@ -123,7 +123,6 @@ public class AddCustomerztoBillController implements Initializable {
         if (true) {
             String customerId = txtCustomerId.getText();
             String customerName = txtCustomerName.getText();
-            String customerIsVip = txtCustomerIsVip.getText();
             String customerPhone = txtCustomerPhone.getText();
             String customerPoint = txtCustomerPoint.getText();
             Customer customer = new Customer(customerId, customerName,"","", customerPhone,  true, Integer.parseInt(customerPoint));

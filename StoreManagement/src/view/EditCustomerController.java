@@ -89,7 +89,8 @@ public class EditCustomerController implements Initializable {
     }
     private void bindingData() {
         // txtCustomerId.setText();
-        txtCustomerIsVip.setText("" + customer.isVIP());
+
+
         txtCustomerName.setText(customer.getName());
         txtCustomerPoint.setText("" + customer.getPoint());
         txtCustomerPhone.setText(customer.getPhone());
@@ -117,7 +118,7 @@ public class EditCustomerController implements Initializable {
 
     public void btnLuu_Click(ActionEvent event) throws FileNotFoundException {
         //VALIDATE
-        if(txtCustomerIsVip.getText().trim().equals("") ||
+        if(
                 txtCustomerName.getText().trim().equals("") ||
                 txtCustomerPhone.getText().toString().trim().equals("") ||
                 txtCustomerPoint.getText().trim().equals("")
@@ -132,17 +133,17 @@ public class EditCustomerController implements Initializable {
 
         String customerId = txtCustomerId.getText();
         String customerName = txtCustomerName.getText();
-        String customerIsVip = txtCustomerIsVip.getText();
+
         String customerPoint = txtCustomerPoint.getText();
         String customerPhone = txtCustomerPhone.getText();
 
-        Customer customer = new Customer(customerId, customerName,"","", customerPhone,  true, Integer.parseInt(customerPoint));
+        Customer newCustomer = new Customer(customerId, customerName,customer.getDoB(),"", customerPhone,  true, Integer.parseInt(customerPoint));
 
         CustomerService.getInstance().updateGoods(customer);
         Util.showSuccess("Quản lý khách hàng", "Sửa khách hàng thành công!");
         customerController.refreshTable();
         txtCustomerId.setText("");
-        txtCustomerIsVip.setText("");
+
         txtCustomerName.setText("");
         txtCustomerPhone.setText("");
         txtCustomerPoint.setText("");

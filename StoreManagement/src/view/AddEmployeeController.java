@@ -131,7 +131,7 @@ public class AddEmployeeController implements Initializable {
             String employeeUsername = txtEmployeeUsername.getText();
             String employeePassword = txtEmployeePassword.getText();
 
-            Employee employee = new Employee(employeeId, employeeName,"", "", "phone", "employee",employeeShift, Long.parseLong(employeeSalary), employeeUsername, "pass");
+            Employee employee = new Employee(employeeId, employeeName,"2000-1-1", "", "phone", "employee",employeeShift, Long.parseLong(employeeSalary), employeeUsername, employeePassword);
 
             EmployeeService.getInstance().addEmployee(employee);
             employeeController.refreshTable();

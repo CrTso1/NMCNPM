@@ -297,10 +297,10 @@ public class BanHangController implements Initializable{
 
     public void thanhToan (ActionEvent event){
         if(isNewCus) CustomerService.getInstance().addCustomer(customer);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
-        Bill newBill = new Bill(Util.generateID(Util.PREFIX_CODE.BILL), totalPrice, formatter.format(date));
+        Bill newBill = new Bill(Util.generateID(Util.PREFIX_CODE.BI), totalPrice, formatter.format(date));
         BillService.getInstance().addBill(newBill);
 
         for(Product myProduct : billProdList){
@@ -312,7 +312,7 @@ public class BanHangController implements Initializable{
             originProd.setProductQuantity(originQuantity);
             if(originQuantity == 0) ProductService.getInstance().removeProduct(originProd.getProductId());
             else ProductService.getInstance().updateProduct(originProd);
-        }
+        }//
 
 
     }

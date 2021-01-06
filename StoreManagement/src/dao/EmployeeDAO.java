@@ -109,7 +109,7 @@ public class EmployeeDAO {
         try {
             Connection connection = getConnection();
 
-            String sql = "INSERT INTO Employeeoop (ID,"
+            String sql = "INSERT INTO Employee (ID,"
                     + "address,phone_number,Role,Shift,Salary,EmployeeName,Password, name)"
                     + " VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
