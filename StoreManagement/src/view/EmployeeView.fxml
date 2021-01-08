@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="748.0" prefWidth="750.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.view.EmployeeController">
    <children>
@@ -48,7 +55,7 @@
                                  <font>
                                     <Font name="Verdana" size="13.0" />
                                  </font></JFXButton>
-                              <TextField fx:id="textSearch" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0">
+                              <TextField fx:id="txtSearch" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0">
                                  <font>
                                     <Font name="Verdana" size="13.0" />
                                  </font></TextField>

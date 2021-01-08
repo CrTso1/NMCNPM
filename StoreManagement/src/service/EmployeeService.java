@@ -62,4 +62,7 @@ public class EmployeeService {
     public List<Employee> getEmployeeByName(String name){
         return EmployeeDAO.getInstance().getEmployeeByName(name);
     }
+    public List<Employee> searchByName(String name) {
+        return EmployeeDAO.getInstance().searchNV(name);
+    }
 }

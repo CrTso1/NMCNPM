@@ -441,4 +441,30 @@ public class EmployeeDAO {
 
         return listProduct;
     }
+    public List<Employee> searchNV(String find){
+        List<Employee> listEmployee = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from employee where (name is null or name = '' or name LIKE ?)");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String employeeID = res.getString(1);
+                String employeeName = res.getString(2);
+                String employeeAddress = res.getString(3);
+                String employeeDOB = ""+res.getDate(4);
+                String employeePhone = res.getString(5);
+                String emRole = res.getString(6);
+                String emShift = res.getString(7);
+                Long salary = res.getLong(8);
+                String username = res.getString(9);
+                String password = res.getString(10);
+                listEmployee.add(new Employee(employeeID, employeeName, employeeDOB, employeeAddress, employeePhone, emRole, emShift, salary, username, password));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listEmployee;
+    }
 }
