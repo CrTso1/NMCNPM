@@ -81,13 +81,12 @@ public class EmployeeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
-       // bindingData();
-        //TODO : fix search
+        //TODO : fix search done
 
-//        txtSearch.textProperty().addListener((observableValue, s, t1) -> {
-//            listEmployee.clear();
-//            listEmployee.addAll(EmployeeService.getInstance().getEmployeeByName(t1));
-//        });
+        txtSearch.textProperty().addListener((observableValue, s, t1) -> {
+            listEmployee.clear();
+            listEmployee.addAll(EmployeeService.getInstance().searchByName(t1));
+        });
     }
 
     private void setCell() {
